@@ -57,7 +57,8 @@ self.addEventListener('fetch', (e) => {
       const fetchPromise = fetch(request).then(res => {
         cache.put(request, res.clone());
         return res;
-      }).catch(() => cached);
+      }).catch(() => cached || new Response(null, { status: 504 }));
+      e.waitUntil(fetchPromise); // keep SW alive for cache update
       return cached || fetchPromise;
     })());
     return;
