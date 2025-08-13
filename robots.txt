@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chuckle-park-bar.github.io/sitemap.xml

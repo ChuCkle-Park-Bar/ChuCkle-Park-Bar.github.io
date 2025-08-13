@@ -1,6 +1,6 @@
-# Chuckle Park Bar Web Page
+# ChuCkle Park Bar Web Page
 
-静的サイト用の画像配置と JSON マニフェスト生成フローの説明です。
+静的サイト (GitHub Pages) 用資産管理 + 自動 JSON マニフェスト生成 + SEO / PWA 対応のドキュメントです。
 
 ## 概要
 
@@ -8,8 +8,8 @@
 
 | 生成物 | 役割 |
 |--------|------|
-| `hero.json` | ヒーローエリア用画像の一覧 (`images/hero/`) |
-| `gallery.json` | ギャラリー画像一覧 (`images/gallery/`) |
+| `hero.json` | ヒーローエリア用画像の一覧 (`images/hero/`) + alt テキスト |
+| `gallery.json` | ギャラリー画像一覧 (`images/gallery/`) + alt テキスト |
 | `menu.json` | メニュー項目一覧 (`images/menu/<category>/` の命名規約を解析) |
 
 ## 前提
@@ -53,11 +53,12 @@ images/
 
 ```json
 [
-  { "file": "hero_01.jpg", "path": "images/hero/hero_01.jpg" }
+  { "file": "hero_01.jpg", "path": "images/hero/hero_01.jpg", "alt": "静かな照明に包まれたバーカウンター" }
 ]
 ```
 
-ファイル名昇順で並びます。
+- ファイル名昇順で並びます。
+- `alt` はアクセシビリティ / SEO 用。生成スクリプトは現状 alt を自動付与しないため、必要に応じて手動編集してください。
 
 ### menu.json (例)
 
@@ -88,7 +89,7 @@ images/
 | ローカル開発サーバ (<http://localhost:5173>) | `npm run dev` |
 | ブラウザ自動オープン付き | `npm run dev:open` |
 
-## 追加/更新フロー
+## 追加/更新フロー (画像)
 
 1. 画像を規定フォルダへ配置 / 置き換え。
 2. (メニュー画像なら) 命名規約を確認。
@@ -109,7 +110,7 @@ menu.json を出力しました: C:\git\WebPage\menu.json (件数: 12)
 hero.json (2) / gallery.json (3) を生成 (ファイル名昇順)
 ```
 
-## トラブルシュート
+## トラブルシュート (画像生成)
 
 | 事象 | 対処 |
 |------|------|
@@ -117,12 +118,68 @@ hero.json (2) / gallery.json (3) を生成 (ファイル名昇順)
 | 画像を追加したのに JSON に出ない | 対象拡張子か、コマンドを再実行したか確認。 |
 | `images/menu` が無いエラー | ディレクトリを作成して再実行。 |
 
+## SEO 対応
+
+実装済み:
+
+- `<title>` 最適化 / `meta description` / `canonical` / `meta robots`
+- Open Graph / Twitter Card メタ
+- 構造化データ (JSON-LD / `BarOrPub` + `ReserveAction`)
+- `sitemap.xml` / `robots.txt`
+- 各画像の `alt` 属性 (hero / gallery / menu サムネイル)
+
+更新時の注意:
+
+- 住所や営業時間を追加したら JSON-LD の `address` / `openingHoursSpecification` を追記
+- 画像を追加したら alt を JSON に追記し、`git push` で公開反映
+
+## PWA 対応
+
+実装済みファイル:
+
+| ファイル | 役割 |
+|----------|------|
+| `manifest.webmanifest` | アプリ名 / アイコン / ショートカット / share_target |
+| `sw.js` | キャッシュ & オフライン (versioned) |
+| `offline.html` | オフライン時フォールバック |
+
+### Service Worker
+
+- バージョン文字列: `sw.js` 内 `VERSION` 更新でキャッシュ再取得を強制
+- キャッシュ戦略:
+  - HTML: Network First → Cache → `offline.html`
+  - 画像 / スクリプト / CSS: Stale-While-Revalidate
+  - その他: Cache First fallback offline
+
+### 画像追加時の PWA 推奨手順
+
+1. 画像を `images/...` に追加
+2. `npm run generate:media` (hero / gallery 変更時)
+3. alt テキストを `hero.json` / `gallery.json` に追記
+4. 必要なら代表画像を事前キャッシュしたい場合 `sw.js` の `CORE_ASSETS` に追記 & `VERSION` を上げる
+5. コミット & デプロイ
+
+### オフライン挙動テスト
+
+1. ローカルで `npm run dev`
+2. ブラウザで開き一度ロード (SW 登録)
+3. DevTools > Application > Service Workers で登録確認
+4. ネットワークを Offline に切替 → リロードで `offline.html` が表示されることを確認
+
+### manifest.webmanifest 拡張点
+
+追加済み: `shortcuts`, `display_override`, `categories`, `share_target`。不要なら削除可。
+
 ## 今後の拡張アイデア (任意)
 
 - 生成スクリプトに画像メタデータ (幅/高さ) の自動付与
 - 価格やカテゴリの多言語化
 - 画像最適化 (sharp 等) のビルド統合
+- WebP/AVIF 自動生成 + `<picture>` 対応
+- メニューを JSON-LD `Menu` / `MenuItem` / `Offer` で構造化
+- ライトハウス計測ワークフロー (GitHub Actions)
+- LCP 改善: Hero 1枚目 `preload` 化 & 低解像度プレースホルダ (LQIP)
 
 ---
 
-更新: 2025-08-13
+更新: 2025-08-13 (SEO & PWA 追記)

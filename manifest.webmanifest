@@ -1,0 +1,50 @@
+{
+  "name": "ChuCkle Park Bar",
+  "short_name": "CP Bar",
+  "description": "本郷の隠れ家ダイニングバー。クラフトカクテル・ウイスキー・季節の小皿。",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "portrait-primary",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "categories": ["food", "drink", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "メニューを見る",
+      "short_name": "メニュー",
+      "description": "人気のカクテル/ウイスキーをすぐ表示",
+      "url": "/index.html#menu",
+      "icons": [{ "src": "images/chuckleparkbar-logo.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "予約セクション",
+      "short_name": "予約",
+      "description": "予約・問い合わせにジャンプ",
+      "url": "/index.html#reserve",
+      "icons": [{ "src": "images/chuckleparkbar-logo.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ],
+  "share_target": {
+    "action": "/index.html#share",
+    "method": "GET",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {"title": "title", "text": "text", "url": "url"}
+  },
+  "lang": "ja",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "images/chuckleparkbar-logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "images/chuckleparkbar-logo.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -4,11 +4,19 @@
     "path": "images/gallery/gallery_01.jpg"
   },
   {
-    "file": "gallery_02.jpg",
-    "path": "images/gallery/gallery_02.jpg"
+    "file": "gallery_02.jpeg",
+    "path": "images/gallery/gallery_02.jpeg"
   },
   {
-    "file": "gallery_03.jpg",
-    "path": "images/gallery/gallery_03.jpg"
+    "file": "gallery_03.jpeg",
+    "path": "images/gallery/gallery_03.jpeg"
+  },
+  {
+    "file": "gallery_04.jpg",
+    "path": "images/gallery/gallery_04.jpg"
+  },
+  {
+    "file": "gallery_05.jpg",
+    "path": "images/gallery/gallery_05.jpg"
   }
 ]

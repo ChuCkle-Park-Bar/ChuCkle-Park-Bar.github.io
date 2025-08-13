@@ -3,7 +3,71 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ChuCkle Park Bar — 本郷のダイニングバー</title>
+  <title>ChuCkle Park Bar（チャックル パーク バー）— 本郷の隠れ家ダイニングバー｜カクテル・ウイスキー・小皿</title>
+  <meta name="description" content="ChuCkle Park Bar（チャックル パーク バー）は本郷エリアの静かな隠れ家ダイニングバー。クラフトカクテル、厳選ウイスキー、季節の小皿料理で語らう夜を提供します。ご予約はお電話・各種SNSから。" />
+  <meta name="keywords" content="本郷,バー,カクテル,ウイスキー,隠れ家バー,ダイニングバー,名古屋,お酒,ChuCkle Park Bar" />
+  <link rel="canonical" href="https://chuckle-park-bar.github.io/" />
+  <meta name="robots" content="index,follow" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="theme-color" content="#000000" />
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:site_name" content="ChuCkle Park Bar" />
+  <meta property="og:title" content="ChuCkle Park Bar｜本郷の隠れ家ダイニングバー" />
+  <meta property="og:description" content="クラフトカクテルと厳選ウイスキー、季節の小皿で静かに語らう夜。ご予約受付中。" />
+  <meta property="og:url" content="https://chuckle-park-bar.github.io/" />
+  <meta property="og:image" content="https://chuckle-park-bar.github.io/images/chuckleparkbar-logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="ChuCkle Park Bar｜本郷の隠れ家ダイニングバー" />
+  <meta name="twitter:description" content="クラフトカクテルと厳選ウイスキー、季節の小皿。ご予約はお電話・SNSで。" />
+  <meta name="twitter:image" content="https://chuckle-park-bar.github.io/images/chuckleparkbar-logo.png" />
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <!-- Favicon (差し替え可) -->
+  <link rel="icon" type="image/png" href="images/chuckleparkbar-logo.png" />
+  <link rel="shortcut icon" href="images/chuckleparkbar-logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="images/chuckleparkbar-logo.png" />
+  <link rel="manifest" href="manifest.webmanifest" crossorigin="use-credentials" />
+  <!-- iOS / PWA Meta -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="ChuCkle Park Bar" />
+  <!-- 追加サイズのアイコン (同一画像流用。実画像最適化推奨) -->
+  <link rel="apple-touch-icon" sizes="192x192" href="images/chuckleparkbar-logo.png" />
+  <link rel="apple-touch-icon" sizes="512x512" href="images/chuckleparkbar-logo.png" />
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BarOrPub",
+    "@id": "https://chuckle-park-bar.github.io/#bar",
+    "name": "ChuCkle Park Bar",
+    "url": "https://chuckle-park-bar.github.io/",
+    "image": "https://chuckle-park-bar.github.io/images/chuckleparkbar-logo.png",
+    "logo": "https://chuckle-park-bar.github.io/images/chuckleparkbar-logo.png",
+    "description": "本郷エリアの隠れ家ダイニングバー。クラフトカクテル、ウイスキー、季節の小皿を提供。",
+    "servesCuisine": ["Bar", "Cocktails", "Whisky"],
+    "priceRange": "¥¥",
+    "telephone": "+81-52-990-9426",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "JP"
+    },
+    "potentialAction": {
+      "@type": "ReserveAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://chuckle-park-bar.github.io/#reserve"
+      },
+      "result": {
+        "@type": "Reservation",
+        "name": "Table Reservation"
+      }
+    }
+  }
+  </script>
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config = { theme: { extend: { colors: { brand: { DEFAULT: '#9A7B4F', dark: '#7C623F' }}}}};</script>
@@ -347,7 +411,8 @@
               list.forEach((h, i) => {
                 const slide = document.createElement('div');
                 slide.className = 'swiper-slide';
-                slide.innerHTML = `<div class="h-full w-full"><img src="${h.path}" alt="Hero ${i+1}" class="js-hero-parallax h-full w-full object-cover opacity-70" loading="lazy" decoding="async"></div>`;
+                const alt = (h.alt || `Hero ${i+1}`).replace(/"/g,'&quot;');
+                slide.innerHTML = `<div class=\"h-full w-full\"><img src=\"${h.path}\" alt=\"${alt}\" class=\"js-hero-parallax h-full w-full object-cover opacity-70\" loading=\"lazy\" decoding=\"async\"></div>`;
                 heroWrapper.appendChild(slide);
               });
               // 既存 Swiper 再初期化
@@ -381,7 +446,8 @@
             listG.forEach((g, i) => {
               const slide = document.createElement('div');
               slide.className = 'swiper-slide';
-              slide.innerHTML = `<a href="${g.path}" class="glightbox block relative h-64 w-full overflow-hidden rounded-xl border border-white/10" data-gallery="gallery" data-type="image" data-title="Gallery ${i+1}"><img src="${g.path}" alt="Gallery ${i+1}" class="h-full w-full object-cover" loading="lazy" decoding="async"></a>`;
+              const alt = (g.alt || `Gallery ${i+1}`).replace(/"/g,'&quot;');
+              slide.innerHTML = `<a href=\"${g.path}\" class=\"glightbox block relative h-64 w-full overflow-hidden rounded-xl border border-white/10\" data-gallery=\"gallery\" data-type=\"image\" data-title=\"Gallery ${i+1}\"><img src=\"${g.path}\" alt=\"${alt}\" class=\"h-full w-full object-cover\" loading=\"lazy\" decoding=\"async\"></a>`;
               galleryWrapper.appendChild(slide);
             });
             // Gallery Swiper 再初期化
@@ -535,6 +601,14 @@
           console.log('%cAll smoke tests scheduled / some async', 'color:#22c55e');
         }, 300);
       }
+    }
+  </script>
+  <script>
+    // Service Worker registration
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(err => console.warn('SW register failed', err));
+      });
     }
   </script>
 </body>
