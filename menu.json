@@ -1,0 +1,20 @@
+[
+  {
+    "category": "cocktail",
+    "categoryLabel": "カクテル",
+    "index": 1,
+    "name": "Yuzu Gimlet",
+    "description": "柚子とジンの爽快なバランス。",
+    "price": 1300,
+    "image": "images/menu/cocktail/01_Yuzu Gimlet_柚子とジンの爽快なバランス。_1300.jpeg"
+  },
+  {
+    "category": "whisky",
+    "categoryLabel": "ウイスキー",
+    "index": 1,
+    "name": "響",
+    "description": "山崎蒸溜所で生まれたモルト原酒だけでつくられたウイスキー。",
+    "price": 1800,
+    "image": "images/menu/whisky/01_響_山崎蒸溜所で生まれたモルト原酒だけでつくられたウイスキー。_1800.jpg"
+  }
+]

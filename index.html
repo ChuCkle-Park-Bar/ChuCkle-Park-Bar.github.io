@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ChuCkle Park Bar — 本郷のダイニングバー</title>
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { colors: { brand: { DEFAULT: '#9A7B4F', dark: '#7C623F' }}}}};</script>
+  <!-- AOS / Swiper / GLightbox -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://unpkg.com/swiper@10/swiper-bundle.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    .nav-active { color: #9A7B4F !important; }
+    .menu-thumb{display:flex;align-items:center;justify-content:center}
+    .menu-thumb img{width:220px;height:150px;object-fit:cover}
+    /* Menu filter animation: always from bottom */
+    #menuGrid .grid-item { will-change: transform, opacity; }
+    #menuGrid .anim-enter { opacity:0; transform: translateY(32px); }
+    #menuGrid .anim-enter-active { opacity:1; transform: translateY(0); transition: opacity .42s ease, transform .42s cubic-bezier(.22,.61,.36,1); }
+    /* GLightbox caption color override (白背景に黒文字) */
+    .glightbox-container .gslide-description, 
+    .glightbox-container .gdesc-inner, 
+    .glightbox-container .gslide-title, 
+    .glightbox-container .__lb-extra-desc { color:#000 !important; }
+    .glightbox-container .__lb-extra-desc { opacity:1 !important; }
+    /* 既定テーマで白背景でない場合に備え背景を白に統一（必要に応じて調整） */
+    .glightbox-container .gdesc-inner { background:#fff !important; }
+  </style>
+</head>
+<body class="bg-black text-zinc-100">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-md z-50">
+    <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
+      <!-- ロゴ -->
+      <a href="#home" class="flex items-center gap-3">
+        <span class="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-md bg-white ring-1 ring-white/10">
+          <img src="images/chuckleparkbar-logo.png" alt="ChuCkle Park Bar ロゴ" class="h-full w-full object-contain scale-150" />
+        </span>
+        <span class="text-white font-bold text-lg">ChuCkle Park Bar</span>
+      </a>
+
+      <!-- トグルボタン（モバイル表示） -->
+      <button id="navToggle" class="md:hidden inline-flex items-center justify-center rounded-lg border border-white/15 px-3 py-2 text-white/90 hover:text-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-brand" aria-controls="mobileNav" aria-expanded="false" aria-label="メニューを開閉">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+
+      <!-- デスクトップナビ -->
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#about" data-nav="#about" class="text-white hover:text-brand">コンセプト</a>
+        <a href="#menu" data-nav="#menu" class="text-white hover:text-brand">メニュー</a>
+        <a href="#gallery" data-nav="#gallery" class="text-white hover:text-brand">ギャラリー</a>
+        <a href="#reserve" data-nav="#reserve" class="text-white hover:text-brand">ご予約</a>
+      </nav>
+    </div>
+    <!-- モバイルナビ（スライドドロワー） -->
+    <nav id="mobileNav" class="md:hidden max-w-6xl mx-auto px-4 pb-3 hidden">
+      <ul class="mt-2 flex flex-col rounded-2xl border border-white/10 bg-zinc-900/90 overflow-hidden">
+        <li><a href="#about" data-nav="#about" class="block px-4 py-3 text-white/90 hover:bg-white/5">コンセプト</a></li>
+        <li><a href="#menu" data-nav="#menu" class="block px-4 py-3 text-white/90 hover:bg-white/5">メニュー</a></li>
+        <li><a href="#gallery" data-nav="#gallery" class="block px-4 py-3 text-white/90 hover:bg-white/5">ギャラリー</a></li>
+        <li><a href="#reserve" data-nav="#reserve" class="block px-4 py-3 text-white/90 hover:bg-white/5">ご予約</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero: Swiper + Parallax -->
+  <section id="home" class="relative min-h-screen overflow-hidden pt-16">
+    <!-- 背景スライダー (dynamic) -->
+    <div class="swiper heroSwiper absolute inset-0 -z-10">
+      <div class="swiper-wrapper" id="heroSlides">
+        <div class="swiper-slide"><div class="h-full w-full flex items-center justify-center text-white/60 text-sm">Loading...</div></div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- ナビボタン -->
+    <div class="pointer-events-none absolute inset-y-0 left-0 z-10 flex items-center">
+      <button type="button" aria-label="前へ" class="hero-prev pointer-events-auto ml-2 md:ml-4 rounded-full border border-white/20 bg-black/40 p-3 backdrop-blur transition hover:bg-black/60 focus:outline-none focus:ring-2 focus:ring-brand">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+    </div>
+    <div class="pointer-events-none absolute inset-y-0 right-0 z-10 flex items-center">
+      <button type="button" aria-label="次へ" class="hero-next pointer-events-auto mr-2 md:mr-4 rounded-full border border-white/20 bg-black/40 p-3 backdrop-blur transition hover:bg-black/60 focus:outline-none focus:ring-2 focus:ring-brand">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <!-- ヒーローコンテンツ -->
+    <div class="relative mx-auto flex min-h-[80vh] max-w-4xl items-center px-6 text-center" data-aos="fade-up" data-aos-duration="800">
+      <div class="w-full flex flex-col items-center">
+        <!-- 中央ロゴ -->
+        <div class="mb-5" data-aos="zoom-in" data-aos-delay="50">
+          <img src="images/chuckleparkbar-logo.png" alt="ChuCkle Park Bar メインロゴ" class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-contain invert select-none pointer-events-none" draggable="false" />
+        </div>
+        <!-- タイトル（ロゴ下に移動） -->
+        <h1 class="text-4xl font-semibold tracking-tight md:text-6xl" data-aos="fade-up" data-aos-delay="80">都会の隠れ家で、<br class="hidden md:block"/>一杯の余白を。</h1>
+        <p class="mx-auto mt-5 max-w-2xl text-zinc-300" data-aos="fade-up" data-aos-delay="140">クラフトカクテルと厳選ウイスキー、季節の小皿。静かに語らう夜をお届けします。</p>
+        <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row" data-aos="zoom-in" data-aos-delay="220">
+          <a href="#reserve" class="rounded-2xl bg-brand px-6 py-3 font-medium text-black hover:bg-brand-dark">席を予約</a>
+          <a href="#menu" class="rounded-2xl border border-white/20 px-6 py-3 font-medium hover:bg-white/5">メニューを見る</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-20 border-b border-white/10 scroll-mt-16" data-aos="fade-up" data-aos-duration="800">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+      <div data-aos="fade-right" data-aos-duration="800">
+        <h2 class="text-3xl font-semibold mb-4">コンセプト</h2>
+        <p class="text-zinc-300 leading-7">音は控えめに、会話は自由に。素材の香りを引き出すクラフトを大切に、季節ごとに入れ替わるメニューをご用意。お一人でも、二人でも、仕事帰りの一杯から特別な日の締めくくりまで。</p>
+        <ul class="mt-6 space-y-2 text-zinc-400">
+          <li>・カウンター8席／4名ソファ2卓（計20席）</li>
+          <li>・フードは深夜2:00までご提供</li>
+          <li>・BARと酒場の二つの雰囲気</li>
+        </ul>
+      </div>
+      <div data-aos="fade-left" data-aos-duration="800">
+        <img class="w-full rounded-2xl border border-white/10 object-cover" src="images/hero/hero_02.jpg" alt="店内写真" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu: Isotope + GLightbox -->
+  <section id="menu" class="py-20 scroll-mt-16" data-aos="fade-up" data-aos-duration="800">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-semibold mb-6">メニュー</h2>
+
+      <div class="mb-6 flex flex-wrap gap-2">
+        <button class="rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5 filter-active" data-filter="*">すべて</button>
+        <button class="rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5" data-filter=".cocktail">カクテル</button>
+        <button class="rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5" data-filter=".whisky">ウイスキー</button>
+        <button class="rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5" data-filter=".food">小皿</button>
+        <button class="rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5" data-filter=".nonalc">ノンアル</button>
+      </div>
+
+      <div id="menuGrid" class="grid grid-cols-1 gap-6 md:grid-cols-3" data-loading="1">
+        <div class="col-span-full text-center text-zinc-500">読み込み中...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery: Swiper + GLightbox -->
+  <section id="gallery" class="py-20 border-t border-white/10 scroll-mt-16" data-aos="fade-up" data-aos-duration="800">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-semibold mb-6">ギャラリー</h2>
+      <div class="swiper myGallery" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper-wrapper" id="gallerySlides">
+          <div class="swiper-slide"><div class="h-64 w-full flex items-center justify-center rounded-xl border border-white/10 text-white/60 text-sm">Loading...</div></div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reserve -->
+  <section id="reserve" class="py-20 border-t border-white/10 scroll-mt-16" data-aos="fade-up" data-aos-duration="600" data-aos-offset="50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-semibold mb-3">ご予約</h2>
+      <p class="text-zinc-300">お電話、または各種メッセージアプリから承ります。貸切等もご相談ください。</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="tel:0529909426" class="rounded-2xl bg-brand px-5 py-3 font-medium text-black hover:bg-brand-dark">電話（052-990-9426）</a>
+        <a href="#" class="rounded-2xl border border-white/20 px-5 py-3 font-medium hover:bg-white/5">LINE で予約</a>
+        <a href="https://ig.me/m/chuckleparkbar" class="rounded-2xl border border-white/20 px-5 py-3 font-medium hover:bg-white/5" target="_blank" rel="noopener">Instagram DM</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-10">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-zinc-400">© <span id="year"></span> ChuCkle Park Bar</p>
+      <nav class="text-sm text-zinc-400">
+        <a href="https://www.instagram.com/chuckleparkbar?igsh=bjM0cWs0bnVua3Iy" class="hover:text-white" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+  <script>
+    // 年表示
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ナビ開閉（#navToggle に一本化）
+    (() => {
+      const toggle = document.getElementById('navToggle');
+      const mobile = document.getElementById('mobileNav');
+      if (toggle && mobile && !toggle.dataset.bound) {
+        const setExpanded = (open) => {
+          toggle.setAttribute('aria-expanded', String(open));
+          mobile.classList.toggle('hidden', !open);
+        };
+        setExpanded(false);
+        toggle.addEventListener('click', () => setExpanded(mobile.classList.contains('hidden')));
+        mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setExpanded(false)));
+        document.addEventListener('click', (e) => {
+          if (!mobile.classList.contains('hidden') && !e.target.closest('header')) setExpanded(false);
+        });
+        toggle.dataset.bound = '1';
+      }
+    })();
+
+  // AOS init（高速・一度だけ・reserve 発火確実化）
+  AOS.init({ duration: 500, easing: 'ease-out-quart', once: true, offset: 80 });
+  window.addEventListener('load', () => setTimeout(() => AOS.refreshHard(), 150));
+
+    // Smooth Scroll + ScrollSpy（固定ヘッダー分オフセット）
+    (() => {
+      const links = document.querySelectorAll('[data-nav]');
+      links.forEach(a => {
+        if (!a.dataset.bound) {
+          a.addEventListener('click', (e) => {
+            const id = a.getAttribute('href');
+            const target = document.querySelector(id);
+            if (target) {
+              e.preventDefault();
+              const headerOffset = 72; // h-16 (64px) + 余白少し
+              const rect = target.getBoundingClientRect();
+              const y = rect.top + window.pageYOffset - headerOffset;
+              window.scrollTo({ top: y < 0 ? 0 : y, behavior: 'smooth' });
+            }
+          });
+          a.dataset.bound = '1';
+        }
+      });
+      const sections = ['home','about','menu','gallery','reserve']
+        .map(id => document.getElementById(id)).filter(Boolean);
+      if (!window.__observer) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const id = '#' + entry.target.id;
+              document.querySelectorAll('[data-nav]').forEach(a => a.classList.remove('nav-active'));
+              document.querySelectorAll(`[data-nav="${id}"]`).forEach(a => a.classList.add('nav-active'));
+            }
+          });
+        }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
+        sections.forEach(s => io.observe(s));
+        window.__observer = io;
+      }
+    })();
+
+    // Hero Swiper + Parallax
+    (() => {
+      if (window.Swiper && !window.__heroSwiper) {
+        window.__heroSwiper = new Swiper('.heroSwiper', {
+          loop: true,
+          speed: 900,
+          allowTouchMove: true,
+          simulateTouch: true,
+          autoplay: { delay: 4500, disableOnInteraction: false },
+          effect: 'fade',
+          fadeEffect: { crossFade: true },
+          pagination: { el: '.heroSwiper .swiper-pagination', clickable: true },
+          navigation: { nextEl: '.hero-next', prevEl: '.hero-prev' },
+          keyboard: { enabled: true, onlyInViewport: true }
+        });
+      }
+      if (!window.__parallaxBound) {
+        const onScroll = () => {
+          const y = window.scrollY || window.pageYOffset;
+          const scale = 1 + Math.min(y / 3000, 0.06);
+          document.querySelectorAll('.js-hero-parallax').forEach(img => {
+            img.style.transform = `translateY(${y * 0.12}px) scale(${scale})`;
+          });
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.__parallaxBound = true;
+      }
+    })();
+
+    // GLightbox（拡大時のみ説明文を表示）
+    if (window.GLightbox && !window.__lightbox) {
+      window.__lightbox = GLightbox({
+        selector: '.glightbox',
+        touchNavigation: true,
+        loop: true,
+        closeOnOutsideClick: true
+      });
+      // クリックされたトリガーを保持
+      document.addEventListener('click', (e) => {
+        const a = e.target && e.target.closest ? e.target.closest('a.glightbox') : null;
+        if (a) window.__lastLightboxTrigger = a;
+      }, true);
+      const injectDescription = () => {
+        const container = document.querySelector('.glightbox-container');
+        if (!container) return;
+        const descInner = container.querySelector('.gdesc-inner');
+        if (!descInner) return;
+        // 現在スライドの画像 src を取得
+        const currentImg = container.querySelector('.gslide.current img');
+        let desc = '';
+        if (currentImg) {
+          const src = currentImg.getAttribute('src');
+          // 同一 href のアンカーを検索
+          const trigger = document.querySelector(`a.glightbox[href="${CSS.escape(src)}"]`);
+          if (trigger && trigger.dataset.description) desc = trigger.dataset.description;
+        }
+        // 最後にクリックした要素の description をフォールバック
+        if (!desc && window.__lastLightboxTrigger && window.__lastLightboxTrigger.dataset.description) {
+          desc = window.__lastLightboxTrigger.dataset.description;
+        }
+        // 既存追加分を一旦削除
+        descInner.querySelectorAll('.__lb-extra-desc').forEach(n => n.remove());
+        if (desc) {
+          const el = document.createElement('div');
+            el.className = '__lb-extra-desc mt-2 text-sm opacity-80 leading-relaxed';
+            el.textContent = desc;
+            descInner.appendChild(el);
+        }
+      };
+      // open / slide change 時に注入
+      try {
+        window.__lightbox.on('open', injectDescription);
+        window.__lightbox.on('slide_changed', injectDescription);
+      } catch(_) {
+        // on API 無いバージョンの場合フォールバックでクリック後遅延注入
+        document.addEventListener('click', (e) => {
+          if (e.target.closest && e.target.closest('a.glightbox')) {
+            setTimeout(injectDescription, 120);
+          }
+        });
+      }
+    }
+
+    // Hero / Gallery 画像を JSON から動的読み込み
+    (async () => {
+      // Hero
+      const heroWrapper = document.getElementById('heroSlides');
+      try {
+        const res = await fetch('hero.json', { cache: 'no-store' });
+        if (res.ok) {
+          const list = await res.json();
+            if (Array.isArray(list) && list.length) {
+              heroWrapper.innerHTML = '';
+              list.forEach((h, i) => {
+                const slide = document.createElement('div');
+                slide.className = 'swiper-slide';
+                slide.innerHTML = `<div class="h-full w-full"><img src="${h.path}" alt="Hero ${i+1}" class="js-hero-parallax h-full w-full object-cover opacity-70" loading="lazy" decoding="async"></div>`;
+                heroWrapper.appendChild(slide);
+              });
+              // 既存 Swiper 再初期化
+              if (window.__heroSwiper && window.__heroSwiper.destroy) { try { window.__heroSwiper.destroy(true,true); } catch(_){} }
+              if (window.Swiper) {
+                window.__heroSwiper = new Swiper('.heroSwiper', {
+                  loop: true,
+                  speed: 900,
+                  allowTouchMove: true,
+                  simulateTouch: true,
+                  autoplay: { delay: 4500, disableOnInteraction: false },
+                  effect: 'fade',
+                  fadeEffect: { crossFade: true },
+                  pagination: { el: '.heroSwiper .swiper-pagination', clickable: true },
+                  navigation: { nextEl: '.hero-next', prevEl: '.hero-prev' },
+                  keyboard: { enabled: true, onlyInViewport: true }
+                });
+              }
+            }
+        }
+      } catch(e) { console.warn('hero.json load failed', e); }
+
+      // Gallery
+      const galleryWrapper = document.getElementById('gallerySlides');
+      try {
+        const resG = await fetch('gallery.json', { cache: 'no-store' });
+        if (resG.ok) {
+          const listG = await resG.json();
+          if (Array.isArray(listG) && listG.length) {
+            galleryWrapper.innerHTML = '';
+            listG.forEach((g, i) => {
+              const slide = document.createElement('div');
+              slide.className = 'swiper-slide';
+              slide.innerHTML = `<a href="${g.path}" class="glightbox block relative h-64 w-full overflow-hidden rounded-xl border border-white/10" data-gallery="gallery" data-type="image" data-title="Gallery ${i+1}"><img src="${g.path}" alt="Gallery ${i+1}" class="h-full w-full object-cover" loading="lazy" decoding="async"></a>`;
+              galleryWrapper.appendChild(slide);
+            });
+            // Gallery Swiper 再初期化
+            if (window.__gallerySwiper && window.__gallerySwiper.destroy) { try { window.__gallerySwiper.destroy(true,true); } catch(_){} }
+            if (window.Swiper) {
+              window.__gallerySwiper = new Swiper('.myGallery', {
+                slidesPerView: 1.1,
+                spaceBetween: 16,
+                loop: true,
+                breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
+                pagination: { el: '.myGallery .swiper-pagination', clickable: true },
+                navigation: { nextEl: '.myGallery .swiper-button-next', prevEl: '.myGallery .swiper-button-prev' },
+                keyboard: { enabled: true }
+              });
+            }
+            // Lightbox 再初期化
+            if (window.__lightbox && window.__lightbox.destroy) { try { window.__lightbox.destroy(); } catch(_){} }
+            if (window.GLightbox) { window.__lightbox = GLightbox({ selector: '.glightbox', touchNavigation: true, loop: true, closeOnOutsideClick: true }); }
+          }
+        }
+      } catch(e) { console.warn('gallery.json load failed', e); }
+    })();
+
+    // 動的メニュー生成 (menu.json から)
+    (async () => {
+      const gridEl = document.getElementById('menuGrid');
+      const categoryLabelMap = { cocktail: 'カクテル', whisky: 'ウイスキー', food: '小皿', nonalc: 'ノンアル' };
+      try {
+        const res = await fetch('menu.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('menu.json load fail');
+        const data = await res.json();
+        if (!Array.isArray(data)) throw new Error('menu.json format');
+        // カテゴリ一覧
+        const categories = Array.from(new Set(data.map(i => i.category)));
+        // フィルタボタン動的再構築
+        const filterBar = document.querySelector('#menu button[data-filter]')?.parentElement;
+        if (filterBar) {
+          filterBar.innerHTML = '';
+          const mkBtn = (label, filter, active=false) => {
+            const b = document.createElement('button');
+            b.className = 'rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5' + (active ? ' filter-active' : '');
+            b.dataset.filter = filter;
+            b.textContent = label;
+            return b;
+          };
+          filterBar.appendChild(mkBtn('すべて', '*', true));
+          categories.forEach(cat => {
+            filterBar.appendChild(mkBtn(categoryLabelMap[cat] || cat, '.' + cat));
+          });
+        }
+        // アイテム生成
+        gridEl.innerHTML = '';
+        data.forEach((item, idx) => {
+          const art = document.createElement('article');
+          art.className = `grid-item ${item.category} rounded-2xl border border-white/10 bg-zinc-900/60 p-4`;
+          art.setAttribute('data-aos','fade-up');
+          art.setAttribute('data-aos-delay', String(50 + (idx % 10)*50));
+          const fullTitle = `${item.name} — ¥${item.price.toLocaleString('ja-JP')}`;
+          // 説明文はライトボックス表示用に data-description にのみ保持
+          art.innerHTML = `\n            <a href="${item.image}" class="glightbox block overflow-hidden rounded-xl menu-thumb" data-type="image" data-gallery="menu" data-title="${fullTitle}" data-description="${item.description.replace(/"/g,'&quot;')}">\n              <img src="${item.image}" alt="${item.name}" width="220" height="150" loading="lazy" decoding="async" />\n            </a>\n            <h3 class=\"mt-3 text-lg font-semibold\">${item.name}</h3>\n            <div class=\"text-right text-zinc-300 mt-1\">¥${item.price.toLocaleString('ja-JP')}</div>\n          `;
+          gridEl.appendChild(art);
+        });
+        // GLightbox 再初期化
+        if (window.__lightbox && window.__lightbox.destroy) { try { window.__lightbox.destroy(); } catch(e){} }
+        if (window.GLightbox) { window.__lightbox = GLightbox({ selector: '.glightbox', touchNavigation: true, loop: true, closeOnOutsideClick: true }); }
+        // AOS 再適用
+        AOS.refreshHard();
+        // Isotope 初期化
+        if (window.Isotope) {
+          imagesLoaded(gridEl, () => {
+            window.__iso = new Isotope(gridEl, { itemSelector: '.grid-item', layoutMode: 'fitRows', transitionDuration: '0.35s' });
+            let first = true;
+            window.__iso.on('arrangeComplete', (filteredItems) => {
+              filteredItems.forEach(it => {
+                const el = it.element;
+                el.classList.add('anim-enter');
+                requestAnimationFrame(() => el.classList.add('anim-enter-active'));
+                setTimeout(() => { el.classList.remove('anim-enter','anim-enter-active'); }, 500);
+              });
+              first = false;
+            });
+            window.__iso.arrange({ filter: '*' });
+          });
+        }
+        // フィルタバインド
+        document.querySelectorAll('[data-filter]').forEach(btn => {
+          if (!btn.dataset.isoBound) {
+            btn.addEventListener('click', () => {
+              const filterValue = btn.getAttribute('data-filter');
+              if (window.__iso) window.__iso.arrange({ filter: filterValue });
+              document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('filter-active'));
+              btn.classList.add('filter-active');
+            });
+            btn.dataset.isoBound = '1';
+          }
+        });
+      } catch (e) {
+        console.error('[menu.json fetch error]', e);
+        let hint = 'menu.json の読み込みに失敗しました。npm run generate:menu を実行してください。';
+        if (location.protocol === 'file:') {
+          hint = 'menu.json を取得できません (file:// で直接開いているため fetch がブロック)。ローカルで簡易サーバを起動してください。\n例: npx http-server .  /  python -m http.server 5500';
+        } else if (e && (e.name === 'TypeError' || /Network|fetch/i.test(e.message || ''))) {
+          hint += '\n(ネットワーク/パスの問題の可能性)';
+        }
+        if (gridEl) gridEl.innerHTML = `<div class="col-span-full whitespace-pre-line text-center text-red-400">${hint}</div>`;
+      }
+    })();
+
+    // 🧪 既存テスト + 追加テスト（?test=1 で実行）
+    if (/[?&](test|e2e)=1/.test(location.search)) {
+      // 既存: ナビ開閉
+      const toggle = document.getElementById('navToggle');
+      const mobile = document.getElementById('mobileNav');
+      console.assert(!!toggle, 'TEST1 FAIL: #navToggle 不在');
+      console.assert(!!mobile, 'TEST2 FAIL: #mobileNav 不在');
+      const before = mobile.classList.contains('hidden');
+      toggle?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      const after1 = mobile.classList.contains('hidden');
+      console.assert(before !== after1, 'TEST3 FAIL: 開閉しない');
+      toggle?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      const after2 = mobile.classList.contains('hidden');
+      console.assert(before === after2, 'TEST4 FAIL: 2回目で戻らない');
+
+      // 追加: Hero スワイパー
+      console.assert(!!window.__heroSwiper, 'TEST5 FAIL: Hero Swiper 未初期化');
+      const prevIndex = window.__heroSwiper?.realIndex;
+      document.querySelector('.hero-next')?.click();
+      setTimeout(() => {
+        const newIndex = window.__heroSwiper?.realIndex;
+        console.assert(prevIndex !== newIndex, 'TEST6 FAIL: hero-next クリックで進まない');
+      }, 600);
+
+      // 追加: GLightbox オープン
+      const firstThumb = document.querySelector('.menu-thumb');
+      if (firstThumb) {
+        firstThumb.click();
+        setTimeout(() => {
+          const opened = document.querySelector('.glightbox-container');
+          console.assert(!!opened, 'TEST7 FAIL: メニューサムネクリックで拡大が開かない');
+        }, 400);
+      }
+
+      // 追加: Isotope フィルタ
+      const grid = document.getElementById('menuGrid');
+      if (grid && window.__iso) {
+        const total = window.__iso.items.length;
+        document.querySelector('[data-filter=".cocktail"]')?.click();
+        setTimeout(() => {
+          const after = window.__iso.filteredItems.length;
+          console.assert(after < total, `TEST8 FAIL: フィルタで件数が減らない total=${total} after=${after}`);
+          console.log('%cAll smoke tests scheduled / some async', 'color:#22c55e');
+        }, 300);
+      }
+    }
+  </script>
+</body>
+</html>

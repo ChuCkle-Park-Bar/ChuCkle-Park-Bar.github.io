@@ -1,0 +1,16 @@
+{
+  "name": "chuckle-park-bar-site",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "generate:menu": "node scripts/generate-menu-manifest.mjs",
+    "generate:media": "node scripts/generate-media-manifests.mjs",
+    "generate:all": "npm run generate:menu && npm run generate:media",
+    "dev": "http-server -p 5173 -c-1 .",
+    "dev:open": "http-server -o -p 5173 -c-1 ."
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
