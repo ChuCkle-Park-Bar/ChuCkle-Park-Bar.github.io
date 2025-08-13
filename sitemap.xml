@@ -21,6 +21,11 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://chuckle-park-bar.github.io/#access</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://chuckle-park-bar.github.io/#reserve</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

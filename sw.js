@@ -1,5 +1,5 @@
 /* Basic service worker for offline cache */
-const VERSION = 'v1.0.1';
+const VERSION = 'v1.0.2';
 const STATIC_CACHE = `static-${VERSION}`;
 const RUNTIME_CACHE = 'runtime';
 const OFFLINE_URL = 'offline.html';

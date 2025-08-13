@@ -19,6 +19,13 @@
       "icons": [{ "src": "images/chuckleparkbar-logo.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
+      "name": "アクセス",
+      "short_name": "アクセス",
+      "description": "所在地と地図を表示",
+      "url": "/index.html#access",
+      "icons": [{ "src": "images/chuckleparkbar-logo.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
       "name": "予約セクション",
       "short_name": "予約",
       "description": "予約・問い合わせにジャンプ",
