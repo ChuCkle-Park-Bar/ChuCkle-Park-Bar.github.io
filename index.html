@@ -96,6 +96,8 @@
     #menuGrid .grid-item { will-change: transform, opacity; }
     #menuGrid .anim-enter { opacity:0; transform: translateY(32px); }
     #menuGrid .anim-enter-active { opacity:1; transform: translateY(0); transition: opacity .42s ease, transform .42s cubic-bezier(.22,.61,.36,1); }
+    /* Filter active styles - 共通スタイル */
+    .filter-active { background-color: #9A7B4F !important; color: #000 !important; }
     /* GLightbox caption color override (白背景に黒文字) */
     .glightbox-container .gslide-description, 
     .glightbox-container .gdesc-inner, 
@@ -188,7 +190,7 @@
   <!-- About -->
   <section id="about" class="py-20 border-b border-white/10 scroll-mt-16" data-aos="fade-up" data-aos-duration="800">
     <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
-      <div data-aos="fade-right" data-aos-duration="800">
+      <div data-aos="fade-up" data-aos-duration="800">
         <h2 class="text-3xl font-semibold mb-4">コンセプト</h2>
         <p class="text-zinc-300 leading-7">音は控えめに、会話は自由に。素材の香りを引き出すクラフトを大切に、季節ごとに入れ替わるメニューをご用意。お一人でも、二人でも、仕事帰りの一杯から特別な日の締めくくりまで。</p>
         <ul class="mt-6 space-y-2 text-zinc-400">
@@ -197,14 +199,14 @@
           <li>・BARと酒場の二つの雰囲気</li>
         </ul>
       </div>
-      <div data-aos="fade-left" data-aos-duration="800">
-        <img class="w-full rounded-2xl border border-white/10 object-cover" src="images/hero/hero_02.jpg" alt="店内写真" />
+      <div data-aos="fade-up" data-aos-duration="800" class="flex justify-end">
+        <img class="w-1/2 rounded-2xl border border-white/10 object-cover" src="images/exterior.jpg" alt="外観写真" />
       </div>
     </div>
   </section>
 
   <!-- Menu: Isotope + GLightbox -->
-  <section id="menu" class="py-20 scroll-mt-16" data-aos="fade-up" data-aos-duration="800">
+  <section id="menu" class="py-20 scroll-mt-16" data-aos="fdata-aos" data-aos-duration="800">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-3xl font-semibold mb-6">メニュー</h2>
 
@@ -226,6 +228,15 @@
   <section id="gallery" class="py-20 border-t border-white/10 scroll-mt-16" data-aos="fade-up" data-aos-duration="800">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-3xl font-semibold mb-6">ギャラリー</h2>
+
+      <div class="mb-6 flex flex-wrap gap-2">
+        <button class="rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5 filter-active" data-filter="*">すべて</button>
+        <button class="rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5" data-filter=".drinks">ドリンク</button>
+        <button class="rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5" data-filter=".food">フード</button>
+        <button class="rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5" data-filter=".interior">店内</button>
+        <button class="rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5" data-filter=".exterior">外観</button>
+      </div>
+
       <div class="swiper myGallery" data-aos="fade-up" data-aos-delay="100">
         <div class="swiper-wrapper" id="gallerySlides">
           <div class="swiper-slide"><div class="h-64 w-full flex items-center justify-center rounded-xl border border-white/10 text-white/60 text-sm">Loading...</div></div>
@@ -249,7 +260,7 @@
         </p>
         <ul class="mt-6 space-y-2 text-zinc-400 text-sm">
           <li>営業時間: 19:00〜翌3:00</li>
-          <li>定休日: 毎週火曜日</li>
+          <li>定休日: 毎週日曜日</li>
         </ul>
         <div class="mt-6 flex flex-wrap gap-3">
           <a href="https://www.google.com/maps/place/%E3%80%92465-0051+%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E5%90%8D%E6%9D%B1%E5%8C%BA%E7%A4%BE%E3%81%8C%E4%B8%98%EF%BC%91%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%91%EF%BC%94+%E3%83%99%E3%83%AB%E3%83%AD%E3%82%A4%E3%83%A4%E3%83%AB%E6%9C%AC%E9%83%B7/@35.1737694,137.0120761,20.5z/data=!4m15!1m8!3m7!1s0x60036570f7e3cd4d:0xce5b2513449760dc!2z44CSNDY1LTAwNTEg5oSb55-l55yM5ZCN5Y-k5bGL5biC5ZCN5p2x5Yy656S-44GM5LiY77yR5LiB55uu77yR77yR77yUIOODmeODq-ODreOCpOODpOODq-acrOmDtw!3b1!8m2!3d35.1736274!4d137.0121227!16s%2Fg%2F12ht4tvmf!3m5!1s0x60036570f7e3cd4d:0xce5b2513449760dc!8m2!3d35.1736274!4d137.0121227!16s%2Fg%2F12ht4tvmf?entry=ttu&g_ep=EgoyMDI1MDgxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="rounded-2xl border border-white/20 px-5 py-3 text-sm font-medium hover:bg-white/5">Googleマップで開く</a>
@@ -478,40 +489,87 @@
         }
       } catch(e) { console.warn('hero.json load failed', e); }
 
-      // Gallery
+      // Gallery (固定ボタン + メニューと同じパターン)
       const galleryWrapper = document.getElementById('gallerySlides');
+      let allGalleryData = [];
+      let gallerySwiper = null;
+      
       try {
         const resG = await fetch('gallery.json', { cache: 'no-store' });
         if (resG.ok) {
           const listG = await resG.json();
           if (Array.isArray(listG) && listG.length) {
-            galleryWrapper.innerHTML = '';
-            listG.forEach((g, i) => {
-              const slide = document.createElement('div');
-              slide.className = 'swiper-slide';
-              const alt = (g.alt || `Gallery ${i+1}`).replace(/"/g,'&quot;');
-              slide.innerHTML = `<a href=\"${g.path}\" class=\"glightbox block relative h-64 w-full overflow-hidden rounded-xl border border-white/10\" data-gallery=\"gallery\" data-type=\"image\" data-title=\"Gallery ${i+1}\"><img src=\"${g.path}\" alt=\"${alt}\" class=\"h-full w-full object-cover\" loading=\"lazy\" decoding=\"async\"></a>`;
-              galleryWrapper.appendChild(slide);
+            allGalleryData = listG;
+            
+            // 初期描画（すべて）
+            renderGallerySlides('*');
+            
+            // フィルターボタンバインド（固定ボタンに対して）
+            document.querySelectorAll('#gallery [data-filter]').forEach(btn => {
+              if (!btn.dataset.galleryBound) {
+                btn.addEventListener('click', () => {
+                  const filterValue = btn.getAttribute('data-filter');
+                  renderGallerySlides(filterValue);
+                  document.querySelectorAll('#gallery [data-filter]').forEach(b => b.classList.remove('filter-active'));
+                  btn.classList.add('filter-active');
+                });
+                btn.dataset.galleryBound = '1';
+              }
             });
-            // Gallery Swiper 再初期化
-            if (window.__gallerySwiper && window.__gallerySwiper.destroy) { try { window.__gallerySwiper.destroy(true,true); } catch(_){} }
-            if (window.Swiper) {
-              window.__gallerySwiper = new Swiper('.myGallery', {
-                slidesPerView: 1.1,
-                spaceBetween: 16,
-                loop: true,
-                breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
-                pagination: { el: '.myGallery .swiper-pagination', clickable: true },
-                navigation: { nextEl: '.myGallery .swiper-button-next', prevEl: '.myGallery .swiper-button-prev' },
-                keyboard: { enabled: true }
-              });
-            }
-            // Lightbox 再初期化
-            if (window.__lightbox && window.__lightbox.destroy) { try { window.__lightbox.destroy(); } catch(_){} }
-            if (window.GLightbox) { window.__lightbox = GLightbox({ selector: '.glightbox', touchNavigation: true, loop: true, closeOnOutsideClick: true }); }
           }
         }
-      } catch(e) { console.warn('gallery.json load failed', e); }
+      } catch(e) { 
+        console.warn('gallery.json load failed', e);
+        if (galleryWrapper) galleryWrapper.innerHTML = '<div class="swiper-slide"><div class="h-64 w-full flex items-center justify-center rounded-xl border border-white/10 text-red-400 text-sm">Gallery load failed</div></div>';
+      }
+      
+      function renderGallerySlides(filter) {
+        let filteredData;
+        if (filter === '*') {
+          filteredData = allGalleryData;
+        } else {
+          // .接頭辞を取り除いてカテゴリでフィルター
+          const category = filter.startsWith('.') ? filter.substring(1) : filter;
+          filteredData = allGalleryData.filter(g => g.category === category);
+        }
+        
+        galleryWrapper.innerHTML = '';
+        filteredData.forEach((g, i) => {
+          const slide = document.createElement('div');
+          slide.className = 'swiper-slide';
+          const alt = (g.alt || `Gallery ${i+1}`).replace(/"/g,'&quot;');
+          const title = g.category ? `${g.category} - Gallery ${i+1}` : `Gallery ${i+1}`;
+          slide.innerHTML = `<a href="${g.path}" class="glightbox block relative h-64 w-full overflow-hidden rounded-xl border border-white/10" data-gallery="gallery" data-type="image" data-title="${title}"><img src="${g.path}" alt="${alt}" class="h-full w-full object-cover" loading="lazy" decoding="async"></a>`;
+          galleryWrapper.appendChild(slide);
+        });
+        
+        // Swiper 再初期化
+        if (gallerySwiper && gallerySwiper.destroy) { 
+          try { gallerySwiper.destroy(true, true); } catch(_){} 
+        }
+        if (window.Swiper) {
+          gallerySwiper = new Swiper('.myGallery', {
+            slidesPerView: 1.1,
+            spaceBetween: 16,
+            loop: filteredData.length > 1,
+            breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
+            pagination: { el: '.myGallery .swiper-pagination', clickable: true },
+            navigation: { nextEl: '.myGallery .swiper-button-next', prevEl: '.myGallery .swiper-button-prev' },
+            keyboard: { enabled: true }
+          });
+        }
+        
+        // Lightbox 再初期化
+        if (window.__lightbox && window.__lightbox.destroy) { try { window.__lightbox.destroy(); } catch(_){} }
+        if (window.GLightbox) { 
+          window.__lightbox = GLightbox({ 
+            selector: '.glightbox', 
+            touchNavigation: true, 
+            loop: true, 
+            closeOnOutsideClick: true 
+          }); 
+        }
+      }
     })();
 
     // 動的メニュー生成 (menu.json から)
@@ -576,12 +634,12 @@
           });
         }
         // フィルタバインド
-        document.querySelectorAll('[data-filter]').forEach(btn => {
+        document.querySelectorAll('#menu [data-filter]').forEach(btn => {
           if (!btn.dataset.isoBound) {
             btn.addEventListener('click', () => {
               const filterValue = btn.getAttribute('data-filter');
               if (window.__iso) window.__iso.arrange({ filter: filterValue });
-              document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('filter-active'));
+              document.querySelectorAll('#menu [data-filter]').forEach(b => b.classList.remove('filter-active'));
               btn.classList.add('filter-active');
             });
             btn.dataset.isoBound = '1';

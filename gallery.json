@@ -1,22 +1,158 @@
 [
   {
-    "file": "gallery_01.jpg",
-    "path": "images/gallery/gallery_01.jpg"
+    "file": "drinks_01.jpg",
+    "path": "images/gallery/drinks/drinks_01.jpg",
+    "category": "drinks",
+    "categoryLabel": "ドリンク"
   },
   {
-    "file": "gallery_02.jpeg",
-    "path": "images/gallery/gallery_02.jpeg"
+    "file": "drinks_02.jpg",
+    "path": "images/gallery/drinks/drinks_02.jpg",
+    "category": "drinks",
+    "categoryLabel": "ドリンク"
   },
   {
-    "file": "gallery_03.jpeg",
-    "path": "images/gallery/gallery_03.jpeg"
+    "file": "drinks_03.jpg",
+    "path": "images/gallery/drinks/drinks_03.jpg",
+    "category": "drinks",
+    "categoryLabel": "ドリンク"
   },
   {
-    "file": "gallery_04.jpg",
-    "path": "images/gallery/gallery_04.jpg"
+    "file": "drinks_04.jpg",
+    "path": "images/gallery/drinks/drinks_04.jpg",
+    "category": "drinks",
+    "categoryLabel": "ドリンク"
   },
   {
-    "file": "gallery_05.jpg",
-    "path": "images/gallery/gallery_05.jpg"
+    "file": "exterior_01.jpg",
+    "path": "images/gallery/exterior/exterior_01.jpg",
+    "category": "exterior",
+    "categoryLabel": "外観"
+  },
+  {
+    "file": "food_01.jpg",
+    "path": "images/gallery/food/food_01.jpg",
+    "category": "food",
+    "categoryLabel": "フード"
+  },
+  {
+    "file": "food_02.jpg",
+    "path": "images/gallery/food/food_02.jpg",
+    "category": "food",
+    "categoryLabel": "フード"
+  },
+  {
+    "file": "food_03.jpg",
+    "path": "images/gallery/food/food_03.jpg",
+    "category": "food",
+    "categoryLabel": "フード"
+  },
+  {
+    "file": "food_04.jpg",
+    "path": "images/gallery/food/food_04.jpg",
+    "category": "food",
+    "categoryLabel": "フード"
+  },
+  {
+    "file": "food_05.jpg",
+    "path": "images/gallery/food/food_05.jpg",
+    "category": "food",
+    "categoryLabel": "フード"
+  },
+  {
+    "file": "food_06.jpg",
+    "path": "images/gallery/food/food_06.jpg",
+    "category": "food",
+    "categoryLabel": "フード"
+  },
+  {
+    "file": "food_07.jpg",
+    "path": "images/gallery/food/food_07.jpg",
+    "category": "food",
+    "categoryLabel": "フード"
+  },
+  {
+    "file": "food_08.jpg",
+    "path": "images/gallery/food/food_08.jpg",
+    "category": "food",
+    "categoryLabel": "フード"
+  },
+  {
+    "file": "food_09.jpg",
+    "path": "images/gallery/food/food_09.jpg",
+    "category": "food",
+    "categoryLabel": "フード"
+  },
+  {
+    "file": "food_10.jpg",
+    "path": "images/gallery/food/food_10.jpg",
+    "category": "food",
+    "categoryLabel": "フード"
+  },
+  {
+    "file": "food_11.jpg",
+    "path": "images/gallery/food/food_11.jpg",
+    "category": "food",
+    "categoryLabel": "フード"
+  },
+  {
+    "file": "food_12.jpg",
+    "path": "images/gallery/food/food_12.jpg",
+    "category": "food",
+    "categoryLabel": "フード"
+  },
+  {
+    "file": "food_13.jpg",
+    "path": "images/gallery/food/food_13.jpg",
+    "category": "food",
+    "categoryLabel": "フード"
+  },
+  {
+    "file": "food_14.jpg",
+    "path": "images/gallery/food/food_14.jpg",
+    "category": "food",
+    "categoryLabel": "フード"
+  },
+  {
+    "file": "food_15.jpg",
+    "path": "images/gallery/food/food_15.jpg",
+    "category": "food",
+    "categoryLabel": "フード"
+  },
+  {
+    "file": "food_16.jpg",
+    "path": "images/gallery/food/food_16.jpg",
+    "category": "food",
+    "categoryLabel": "フード"
+  },
+  {
+    "file": "food_17.jpg",
+    "path": "images/gallery/food/food_17.jpg",
+    "category": "food",
+    "categoryLabel": "フード"
+  },
+  {
+    "file": "food_18.jpg",
+    "path": "images/gallery/food/food_18.jpg",
+    "category": "food",
+    "categoryLabel": "フード"
+  },
+  {
+    "file": "interior_01.jpg",
+    "path": "images/gallery/interior/interior_01.jpg",
+    "category": "interior",
+    "categoryLabel": "店内"
+  },
+  {
+    "file": "interior_02.jpg",
+    "path": "images/gallery/interior/interior_02.jpg",
+    "category": "interior",
+    "categoryLabel": "店内"
+  },
+  {
+    "file": "interior_03.jpeg",
+    "path": "images/gallery/interior/interior_03.jpeg",
+    "category": "interior",
+    "categoryLabel": "店内"
   }
 ]
