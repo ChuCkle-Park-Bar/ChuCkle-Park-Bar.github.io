@@ -1,7 +1,7 @@
 {
   "name": "ChuCkle Park Bar",
   "short_name": "CP Bar",
-  "description": "本郷の隠れ家ダイニングバー。クラフトカクテル・ウイスキー・季節の小皿。",
+  "description": "本郷の隠れ家ダイニングバー。クラフトカクテル・ウイスキー・季節のフード。",
   "start_url": "/index.html",
   "scope": "/",
   "display": "standalone",

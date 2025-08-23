@@ -13,7 +13,7 @@ const exts = new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif']);
 const categoryLabels = {
   cocktail: 'カクテル',
   whisky: 'ウイスキー',
-  food: '小皿',
+  food: 'フード',
   nonalc: 'ノンアル'
 };
 

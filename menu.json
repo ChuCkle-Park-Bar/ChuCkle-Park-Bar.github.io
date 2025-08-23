@@ -19,7 +19,7 @@
   },
   {
     "category": "food",
-    "categoryLabel": "小皿",
+    "categoryLabel": "フード",
     "index": 1,
     "name": "テスト用",
     "description": "テスト",
@@ -28,7 +28,7 @@
   },
   {
     "category": "food",
-    "categoryLabel": "小皿",
+    "categoryLabel": "フード",
     "index": 2,
     "name": "テスト用",
     "description": "テスト",
@@ -37,7 +37,7 @@
   },
   {
     "category": "food",
-    "categoryLabel": "小皿",
+    "categoryLabel": "フード",
     "index": 3,
     "name": "テスト用",
     "description": "テスト",
@@ -46,7 +46,7 @@
   },
   {
     "category": "food",
-    "categoryLabel": "小皿",
+    "categoryLabel": "フード",
     "index": 4,
     "name": "テスト用",
     "description": "テスト",

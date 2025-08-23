@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ChuCkle Park Bar（チャックル パーク バー）— 本郷の隠れ家ダイニングバー｜カクテル・ウイスキー・小皿</title>
-  <meta name="description" content="ChuCkle Park Bar（チャックル パーク バー）は本郷エリアの静かな隠れ家ダイニングバー。クラフトカクテル、厳選ウイスキー、季節の小皿料理で語らう夜を提供します。ご予約はお電話・各種SNSから。" />
+  <title>ChuCkle Park Bar（チャックル パーク バー）— 本郷の隠れ家ダイニングバー｜カクテル・ウイスキー・フード</title>
+  <meta name="description" content="ChuCkle Park Bar（チャックル パーク バー）は本郷エリアの静かな隠れ家ダイニングバー。クラフトカクテル、厳選ウイスキー、季節のフードで語らう夜を提供します。ご予約はお電話・各種SNSから。" />
   <meta name="keywords" content="本郷,バー,カクテル,ウイスキー,隠れ家バー,ダイニングバー,名古屋,お酒,ChuCkle Park Bar" />
   <link rel="canonical" href="https://chuckle-park-bar.github.io/" />
   <meta name="robots" content="index,follow" />
@@ -15,12 +15,12 @@
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:site_name" content="ChuCkle Park Bar" />
   <meta property="og:title" content="ChuCkle Park Bar｜本郷の隠れ家ダイニングバー" />
-  <meta property="og:description" content="クラフトカクテルと厳選ウイスキー、季節の小皿で静かに語らう夜。ご予約受付中。" />
+  <meta property="og:description" content="クラフトカクテルと厳選ウイスキー、季節のフードで静かに語らう夜。ご予約受付中。" />
   <meta property="og:url" content="https://chuckle-park-bar.github.io/" />
   <meta property="og:image" content="https://chuckle-park-bar.github.io/images/chuckleparkbar-logo.png" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="ChuCkle Park Bar｜本郷の隠れ家ダイニングバー" />
-  <meta name="twitter:description" content="クラフトカクテルと厳選ウイスキー、季節の小皿。ご予約はお電話・SNSで。" />
+  <meta name="twitter:description" content="クラフトカクテルと厳選ウイスキー、季節のフード。ご予約はお電話・SNSで。" />
   <meta name="twitter:image" content="https://chuckle-park-bar.github.io/images/chuckleparkbar-logo.png" />
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
@@ -47,7 +47,7 @@
     "url": "https://chuckle-park-bar.github.io/",
     "image": "https://chuckle-park-bar.github.io/images/chuckleparkbar-logo.png",
     "logo": "https://chuckle-park-bar.github.io/images/chuckleparkbar-logo.png",
-    "description": "本郷エリアの隠れ家ダイニングバー。クラフトカクテル、ウイスキー、季節の小皿を提供。",
+    "description": "本郷エリアの隠れ家ダイニングバー。クラフトカクテル、ウイスキー、季節のフードを提供。",
     "servesCuisine": ["Bar", "Cocktails", "Whisky"],
     "priceRange": "¥¥",
     "telephone": "+81-52-990-9426",
@@ -92,8 +92,15 @@
     .nav-active { color: #9A7B4F !important; }
     .menu-thumb{display:flex;align-items:center;justify-content:center}
     .menu-thumb img{width:220px;height:150px;object-fit:cover}
-    /* Menu grid items - Isotope layout only */
-    #menuGrid .grid-item { will-change: transform, opacity; }
+    /* Simple menu filtering */
+    #menuGrid .menu-item {
+      transition: opacity 0.3s ease;
+      opacity: 1;
+    }
+    #menuGrid .menu-item.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
     /* Filter active styles - 共通スタイル */
     .filter-active { background-color: #9A7B4F !important; color: #000 !important; }
     /* GLightbox caption color override (白背景に黒文字) */
@@ -184,7 +191,7 @@
         </div>
         <!-- タイトル（ロゴ下に移動） -->
         <h1 class="text-4xl font-semibold tracking-tight md:text-6xl" data-aos="fade-up" data-aos-delay="80">都会の隠れ家で、<br class="hidden md:block"/>一杯の余白を。</h1>
-        <p class="mx-auto mt-5 max-w-2xl text-zinc-300" data-aos="fade-up" data-aos-delay="140">クラフトカクテルと厳選ウイスキー、季節の小皿。静かに語らう夜をお届けします。</p>
+        <p class="mx-auto mt-5 max-w-2xl text-zinc-300" data-aos="fade-up" data-aos-delay="140">クラフトカクテルと厳選ウイスキー、季節のフード。静かに語らう夜をお届けします。</p>
         <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row" data-aos="zoom-in" data-aos-delay="220">
           <a href="#reserve" class="rounded-2xl bg-brand px-6 py-3 font-medium text-black hover:bg-brand-dark">席を予約</a>
           <a href="#menu" class="rounded-2xl border border-white/20 px-6 py-3 font-medium hover:bg-white/5">メニューを見る</a>
@@ -206,7 +213,7 @@
         </ul>
       </div>
       <div data-aos="fade-up" data-aos-duration="800" class="flex justify-end">
-        <img class="w-1/2 rounded-2xl border border-white/10 object-cover" src="images/exterior.jpg" alt="外観写真" />
+        <img class="w-96 h-128 rounded-2xl border border-white/10 object-cover" src="images/exterior.jpg" alt="外観写真" />
       </div>
     </div>
   </section>
@@ -220,7 +227,7 @@
         <button class="rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5 filter-active" data-filter="*">すべて</button>
         <button class="rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5" data-filter=".cocktail">カクテル</button>
         <button class="rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5" data-filter=".whisky">ウイスキー</button>
-        <button class="rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5" data-filter=".food">小皿</button>
+        <button class="rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5" data-filter=".food">フード</button>
         <button class="rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5" data-filter=".nonalc">ノンアル</button>
       </div>
 
@@ -310,8 +317,6 @@
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/glightbox/dist/js/glightbox.min.js"></script>
-  <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
-  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
   <script>
     // 年表示
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -586,7 +591,7 @@
     // 動的メニュー生成 (menu.json から)
     (async () => {
       const gridEl = document.getElementById('menuGrid');
-      const categoryLabelMap = { cocktail: 'カクテル', whisky: 'ウイスキー', food: '小皿', nonalc: 'ノンアル' };
+      const categoryLabelMap = { cocktail: 'カクテル', whisky: 'ウイスキー', food: 'フード', nonalc: 'ノンアル' };
       try {
         const res = await fetch('menu.json', { cache: 'no-store' });
         if (!res.ok) throw new Error('menu.json load fail');
@@ -622,7 +627,7 @@
         gridEl.innerHTML = '';
         data.forEach((item, idx) => {
           const art = document.createElement('article');
-          art.className = `grid-item ${item.category} rounded-2xl border border-white/10 bg-zinc-900/60 p-4`;
+          art.className = `menu-item ${item.category} rounded-2xl border border-white/10 bg-zinc-900/60 p-4`;
           art.setAttribute('data-aos','fade-up');
           art.setAttribute('data-aos-delay', String(50 + (idx % 10)*50));
           const fullTitle = `${item.name} — ¥${item.price.toLocaleString('ja-JP')}`;
@@ -635,53 +640,35 @@
         if (window.GLightbox) { window.__lightbox = GLightbox({ selector: '.glightbox', touchNavigation: true, loop: true, closeOnOutsideClick: true }); }
         // AOS 再適用
         AOS.refreshHard();
-        // Isotope 初期化
-        if (window.Isotope) {
-          imagesLoaded(gridEl, () => {
-            window.__iso = new Isotope(gridEl, { 
-              itemSelector: '.grid-item', 
-              layoutMode: 'fitRows', 
-              transitionDuration: '0.3s',
-              hiddenStyle: { opacity: 0, transform: 'scale(0.9)' },
-              visibleStyle: { opacity: 1, transform: 'scale(1)' }
-            });
-            // 初回のみカスタムアニメーション適用
-            let isInitialLoad = true;
-            window.__iso.on('arrangeComplete', (filteredItems) => {
-              if (isInitialLoad) {
-                // 初回読み込み時のみ、下からフェードイン
-                filteredItems.forEach((it, index) => {
-                  const el = it.element;
-                  el.style.opacity = '0';
-                  el.style.transform = 'translateY(30px)';
-                  setTimeout(() => {
-                    el.style.transition = 'opacity 0.4s ease-out, transform 0.4s cubic-bezier(0.22,0.61,0.36,1)';
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0px)';
-                    setTimeout(() => {
-                      el.style.transition = '';
-                      el.style.transform = '';
-                      el.style.opacity = '';
-                    }, 450);
-                  }, index * 50);
-                });
-                isInitialLoad = false;
-              }
-              // フィルタリング後はIsotope標準アニメーションのみ使用
-            });
-            window.__iso.arrange({ filter: '*' });
+        
+        // Simple filtering system
+        function filterMenuItems(category) {
+          const items = document.querySelectorAll('#menuGrid .menu-item');
+          const showAll = category === '*';
+          
+          items.forEach(item => {
+            const itemCategory = item.classList[1]; // menu-item の次のクラスがカテゴリ
+            const shouldShow = showAll || itemCategory === category;
+            
+            if (shouldShow) {
+              item.classList.remove('hidden');
+            } else {
+              item.classList.add('hidden');
+            }
           });
         }
-        // フィルタバインド
+        
+        // フィルタボタンのバインド
         document.querySelectorAll('#menu [data-filter]').forEach(btn => {
-          if (!btn.dataset.isoBound) {
+          if (!btn.dataset.filterBound) {
             btn.addEventListener('click', () => {
               const filterValue = btn.getAttribute('data-filter');
-              if (window.__iso) window.__iso.arrange({ filter: filterValue });
+              const category = filterValue === '*' ? '*' : filterValue.replace('.', '');
+              filterMenuItems(category);
               document.querySelectorAll('#menu [data-filter]').forEach(b => b.classList.remove('filter-active'));
               btn.classList.add('filter-active');
             });
-            btn.dataset.isoBound = '1';
+            btn.dataset.filterBound = '1';
           }
         });
       } catch (e) {
@@ -730,16 +717,19 @@
         }, 400);
       }
 
-      // 追加: Isotope フィルタ
+      // 追加: フィルタリングテスト（シンプル版）
       const grid = document.getElementById('menuGrid');
-      if (grid && window.__iso) {
-        const total = window.__iso.items.length;
-        document.querySelector('[data-filter=".cocktail"]')?.click();
-        setTimeout(() => {
-          const after = window.__iso.filteredItems.length;
-          console.assert(after < total, `TEST8 FAIL: フィルタで件数が減らない total=${total} after=${after}`);
-          console.log('%cAll smoke tests scheduled / some async', 'color:#22c55e');
-        }, 300);
+      if (grid) {
+        const totalItems = grid.querySelectorAll('.menu-item').length;
+        const cocktailBtn = document.querySelector('[data-filter=".cocktail"]');
+        if (cocktailBtn && totalItems > 0) {
+          cocktailBtn.click();
+          setTimeout(() => {
+            const visibleItems = grid.querySelectorAll('.menu-item:not(.hidden)').length;
+            console.assert(visibleItems < totalItems, `TEST8 FAIL: フィルタで件数が減らない total=${totalItems} visible=${visibleItems}`);
+            console.log('%cAll smoke tests scheduled / some async', 'color:#22c55e');
+          }, 400);
+        }
       }
     }
   </script>
