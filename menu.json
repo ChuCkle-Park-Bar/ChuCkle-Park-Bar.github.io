@@ -9,6 +9,51 @@
     "image": "images/menu/cocktail/01_Yuzu Gimlet_柚子とジンの爽快なバランス。_1300.jpeg"
   },
   {
+    "category": "cocktail",
+    "categoryLabel": "カクテル",
+    "index": 2,
+    "name": "テスト用",
+    "description": "テスト",
+    "price": 9999,
+    "image": "images/menu/cocktail/02_テスト用_テスト_9999.jpg"
+  },
+  {
+    "category": "food",
+    "categoryLabel": "小皿",
+    "index": 1,
+    "name": "テスト用",
+    "description": "テスト",
+    "price": 9999,
+    "image": "images/menu/food/01_テスト用_テスト_9999.jpg"
+  },
+  {
+    "category": "food",
+    "categoryLabel": "小皿",
+    "index": 2,
+    "name": "テスト用",
+    "description": "テスト",
+    "price": 9999,
+    "image": "images/menu/food/02_テスト用_テスト_9999.jpg"
+  },
+  {
+    "category": "food",
+    "categoryLabel": "小皿",
+    "index": 3,
+    "name": "テスト用",
+    "description": "テスト",
+    "price": 9999,
+    "image": "images/menu/food/03_テスト用_テスト_9999.jpg"
+  },
+  {
+    "category": "food",
+    "categoryLabel": "小皿",
+    "index": 4,
+    "name": "テスト用",
+    "description": "テスト",
+    "price": 9999,
+    "image": "images/menu/food/04_テスト用_テスト_9999.jpg"
+  },
+  {
     "category": "whisky",
     "categoryLabel": "ウイスキー",
     "index": 1,
@@ -16,5 +61,23 @@
     "description": "山崎蒸溜所で生まれたモルト原酒だけでつくられたウイスキー。",
     "price": 1800,
     "image": "images/menu/whisky/01_響_山崎蒸溜所で生まれたモルト原酒だけでつくられたウイスキー。_1800.jpg"
+  },
+  {
+    "category": "whisky",
+    "categoryLabel": "ウイスキー",
+    "index": 2,
+    "name": "テスト用",
+    "description": "テスト",
+    "price": 9999,
+    "image": "images/menu/whisky/02_テスト用_テスト_9999.jpg.jpg"
+  },
+  {
+    "category": "whisky",
+    "categoryLabel": "ウイスキー",
+    "index": 3,
+    "name": "テスト用",
+    "description": "テスト",
+    "price": 9999,
+    "image": "images/menu/whisky/03_テスト用_テスト_9999.jpg.jpg"
   }
 ]

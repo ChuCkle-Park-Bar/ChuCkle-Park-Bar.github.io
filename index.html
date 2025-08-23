@@ -92,10 +92,8 @@
     .nav-active { color: #9A7B4F !important; }
     .menu-thumb{display:flex;align-items:center;justify-content:center}
     .menu-thumb img{width:220px;height:150px;object-fit:cover}
-    /* Menu filter animation: always from bottom */
+    /* Menu grid items - Isotope layout only */
     #menuGrid .grid-item { will-change: transform, opacity; }
-    #menuGrid .anim-enter { opacity:0; transform: translateY(32px); }
-    #menuGrid .anim-enter-active { opacity:1; transform: translateY(0); transition: opacity .42s ease, transform .42s cubic-bezier(.22,.61,.36,1); }
     /* Filter active styles - 共通スタイル */
     .filter-active { background-color: #9A7B4F !important; color: #000 !important; }
     /* GLightbox caption color override (白背景に黒文字) */
@@ -594,8 +592,16 @@
         if (!res.ok) throw new Error('menu.json load fail');
         const data = await res.json();
         if (!Array.isArray(data)) throw new Error('menu.json format');
-        // カテゴリ一覧
-        const categories = Array.from(new Set(data.map(i => i.category)));
+        // カテゴリ一覧（HTMLボタンの順番を基準に決定）
+        const allCategories = Array.from(new Set(data.map(i => i.category)));
+        // HTMLの既存ボタンの順番を取得
+        const existingButtons = document.querySelectorAll('#menu button[data-filter]');
+        const htmlOrder = Array.from(existingButtons)
+          .map(btn => btn.dataset.filter)
+          .filter(filter => filter !== '*') // "すべて"以外
+          .map(filter => filter.startsWith('.') ? filter.substring(1) : filter);
+        // HTMLの順番に従い、実際に存在するカテゴリのみを選択
+        const categories = htmlOrder.filter(cat => allCategories.includes(cat));
         // フィルタボタン動的再構築
         const filterBar = document.querySelector('#menu button[data-filter]')?.parentElement;
         if (filterBar) {
@@ -632,16 +638,36 @@
         // Isotope 初期化
         if (window.Isotope) {
           imagesLoaded(gridEl, () => {
-            window.__iso = new Isotope(gridEl, { itemSelector: '.grid-item', layoutMode: 'fitRows', transitionDuration: '0.35s' });
-            let first = true;
+            window.__iso = new Isotope(gridEl, { 
+              itemSelector: '.grid-item', 
+              layoutMode: 'fitRows', 
+              transitionDuration: '0.3s',
+              hiddenStyle: { opacity: 0, transform: 'scale(0.9)' },
+              visibleStyle: { opacity: 1, transform: 'scale(1)' }
+            });
+            // 初回のみカスタムアニメーション適用
+            let isInitialLoad = true;
             window.__iso.on('arrangeComplete', (filteredItems) => {
-              filteredItems.forEach(it => {
-                const el = it.element;
-                el.classList.add('anim-enter');
-                requestAnimationFrame(() => el.classList.add('anim-enter-active'));
-                setTimeout(() => { el.classList.remove('anim-enter','anim-enter-active'); }, 500);
-              });
-              first = false;
+              if (isInitialLoad) {
+                // 初回読み込み時のみ、下からフェードイン
+                filteredItems.forEach((it, index) => {
+                  const el = it.element;
+                  el.style.opacity = '0';
+                  el.style.transform = 'translateY(30px)';
+                  setTimeout(() => {
+                    el.style.transition = 'opacity 0.4s ease-out, transform 0.4s cubic-bezier(0.22,0.61,0.36,1)';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0px)';
+                    setTimeout(() => {
+                      el.style.transition = '';
+                      el.style.transform = '';
+                      el.style.opacity = '';
+                    }, 450);
+                  }, index * 50);
+                });
+                isInitialLoad = false;
+              }
+              // フィルタリング後はIsotope標準アニメーションのみ使用
             });
             window.__iso.arrange({ filter: '*' });
           });
