@@ -1,6 +1,6 @@
 # ChuCkle Park Bar Web Page
 
-静的サイト (GitHub Pages) 用資産管理 + 自動 JSON マニフェスト生成 + SEO / PWA 対応のドキュメントです。
+静的サイト (GitHub Pages) 用資産管理 + 自動 JSON マニフェスト生成 + SEO / PWA 対応 + モダンUI実装のドキュメントです。
 
 ## 概要
 
@@ -21,13 +21,17 @@
 
 ```text
 images/
-  hero/      ... ヒーロー画像 (スライド等)
-  gallery/   ... ギャラリー画像
-  menu/
-    cocktail/
-    whisky/
-    food/
-    nonalc/
+  hero/        ... ヒーロー画像 (スライド等)
+  gallery/     ... ギャラリー画像 (カテゴリ別サブフォルダ対応)
+    drinks/    ... ドリンク画像
+    food/      ... フード画像  
+    interior/  ... 店内画像
+    exterior/  ... 外観画像
+  menu/        ... メニュー画像 (カテゴリ別)
+    cocktail/  ... カクテル
+    whisky/    ... ウイスキー
+    food/      ... フード
+    nonalc/    ... ノンアルコール
 ```
 
 拡張子は `.jpg .jpeg .png .webp .avif` が対象です。
@@ -49,16 +53,30 @@ images/
 
 ## 生成される JSON 形式
 
-### hero.json / gallery.json
+### hero.json
 
 ```json
 [
-  { "file": "hero_01.jpg", "path": "images/hero/hero_01.jpg", "alt": "静かな照明に包まれたバーカウンター" }
+  { "file": "hero_01.jpg", "path": "images/hero/hero_01.jpg" }
+]
+```
+
+### gallery.json
+
+```json
+[
+  {
+    "file": "drinks_01.jpg", 
+    "path": "images/gallery/drinks/drinks_01.jpg",
+    "category": "drinks",
+    "categoryLabel": "ドリンク"
+  }
 ]
 ```
 
 - ファイル名昇順で並びます。
-- `alt` はアクセシビリティ / SEO 用。生成スクリプトは現状 alt を自動付与しないため、必要に応じて手動編集してください。
+- ギャラリーは **カテゴリ別フィルタリング機能** に対応。
+- `alt` はアクセシビリティ / SEO 用。必要に応じて手動編集してください。
 
 ### menu.json (例)
 
@@ -79,7 +97,7 @@ images/
 - `categoryLabel` は `scripts/generate-menu-manifest.mjs` 内の `categoryLabels` マップで定義。
 - ソート順: `category` 昇順 → `index` 昇順。
 
-## コマンド一覧 (PowerShell)
+## コマンド一覧
 
 | 目的 | コマンド |
 |------|----------|
@@ -93,21 +111,22 @@ images/
 
 1. 画像を規定フォルダへ配置 / 置き換え。
 2. (メニュー画像なら) 命名規約を確認。
-3. PowerShell でプロジェクトルートへ移動。
+3. ターミナルでプロジェクトルートへ移動。
 4. 必要な生成コマンドを実行。
 5. 生成された `*.json` をコミット。
 
 ### 例: すべて再生成
 
-```powershell
+```bash
 npm run generate:all
 ```
 
 出力例:
 
 ```text
-menu.json を出力しました: C:\git\WebPage\menu.json (件数: 12)
-hero.json (2) / gallery.json (3) を生成 (ファイル名昇順)
+menu.json を出力しました: /Users/project/menu.json (件数: 9)
+hero.json (2) / gallery.json (26) を生成
+ギャラリーカテゴリ: drinks, exterior, food, interior
 ```
 
 ## トラブルシュート (画像生成)
@@ -118,22 +137,64 @@ hero.json (2) / gallery.json (3) を生成 (ファイル名昇順)
 | 画像を追加したのに JSON に出ない | 対象拡張子か、コマンドを再実行したか確認。 |
 | `images/menu` が無いエラー | ディレクトリを作成して再実行。 |
 
-## SEO 対応
+## SEO & UX 実装
+
+### SEO 対応
 
 実装済み:
 
 - `<title>` 最適化 / `meta description` / `canonical` / `meta robots`
-- Open Graph / Twitter Card メタ
+- Open Graph / Twitter Card メタデータ
 - 構造化データ (JSON-LD / `BarOrPub` + `ReserveAction`)
 - `sitemap.xml` / `robots.txt`
 - 各画像の `alt` 属性 (hero / gallery / menu サムネイル)
 
+### UX/UI 実装
+
+**技術スタック:**
+- **Tailwind CSS**: ユーティリティファーストCSSフレームワーク
+- **AOS (Animate On Scroll)**: スクロール連動アニメーション
+- **Swiper**: タッチ対応スライダー (Hero画像 & ギャラリー)
+- **GLightbox**: 軽量ライトボックス (画像拡大表示)
+
+**主要機能:**
+- レスポンシブデザイン (モバイルファースト)
+- ダークテーマ (`bg-black` + `text-zinc-100`)
+- フィルタリング機能 (メニュー & ギャラリー / CSSベース・軽量)
+- スムーズスクロール & スクロールスパイ
+- パララックス効果 (Hero背景)
+- PWA対応 (オフライン閲覧可能)
+
 更新時の注意:
 
-- 住所や営業時間を追加したら JSON-LD の `address` / `openingHoursSpecification` を追記
-- 画像を追加したら alt を JSON に追記し、`git push` で公開反映
+- 住所や営業時間を変更したら JSON-LD の `address` / `openingHoursSpecification` を更新
+- 画像を追加したら必要に応じて alt を JSON に追記し、`git push` で公開反映
+- フィルタリングカテゴリを追加する場合、HTML内のボタンも更新
 
-## PWA 対応
+## フィルタリング機能の詳細
+
+### メニューフィルタリング
+
+- **方式**: CSSベースのシンプルフィルタリング（軽量・高速）
+- **カテゴリ**: cocktail（カクテル）, whisky（ウイスキー）, food（フード）, nonalc（ノンアル）
+- **動作**: `opacity` transition でスムーズな表示/非表示
+
+### ギャラリーフィルタリング  
+
+- **方式**: Swiperスライダーの動的再構築
+- **カテゴリ**: drinks（ドリンク）, food（フード）, interior（店内）, exterior（外観）
+- **動作**: カテゴリ選択時にスライドを再生成してSwiperを再初期化
+
+### フィルタボタンの拡張
+
+新しいカテゴリを追加する場合:
+
+1. 画像を適切なフォルダに配置
+2. `index.html` 内の該当セクションでボタンを追加:
+   ```html
+   <button data-filter=".newcategory">新カテゴリ</button>
+   ```
+3. 生成スクリプト内のカテゴリマップを更新（必要に応じて）
 
 実装済みファイル:
 
@@ -170,7 +231,7 @@ hero.json (2) / gallery.json (3) を生成 (ファイル名昇順)
 
 追加済み: `shortcuts`, `display_override`, `categories`, `share_target`。不要なら削除可。
 
-## 今後の拡張アイデア (任意)
+## 今後の拡張アイデア
 
 - 生成スクリプトに画像メタデータ (幅/高さ) の自動付与
 - 価格やカテゴリの多言語化
@@ -179,7 +240,22 @@ hero.json (2) / gallery.json (3) を生成 (ファイル名昇順)
 - メニューを JSON-LD `Menu` / `MenuItem` / `Offer` で構造化
 - ライトハウス計測ワークフロー (GitHub Actions)
 - LCP 改善: Hero 1枚目 `preload` 化 & 低解像度プレースホルダ (LQIP)
+- フィルタリングアニメーション強化（Isotope / Framer Motion等）
+
+## パフォーマンス最適化
+
+### 実装済み
+- CDN プリコネクト (`preconnect`)
+- 画像遅延読み込み (`loading="lazy"`)
+- Service Worker によるキャッシュ戦略
+- CSS transitions による軽量アニメーション
+- JSON マニフェストによる動的コンテンツ管理
+
+### 今後の改善案
+- Critical CSS のインライン化
+- 画像最適化パイプライン（WebP/AVIF自動変換）
+- Bundle サイズの最適化（必要ライブラリのみ読み込み）
 
 ---
 
-更新: 2025-08-13 (SEO & PWA 追記)
+更新: 2025-08-23 (実装状況に合わせて全面更新)

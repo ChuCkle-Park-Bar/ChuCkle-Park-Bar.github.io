@@ -1,7 +1,7 @@
 {
   "name": "ChuCkle Park Bar",
   "short_name": "CP Bar",
-  "description": "本郷の隠れ家ダイニングバー。クラフトカクテル・ウイスキー・季節のフード。",
+  "description": "本郷の隠れ家バー。豊富なドリンクと本格フード。おひとりでも仲間とでも。",
   "start_url": "/index.html",
   "scope": "/",
   "display": "standalone",
@@ -14,7 +14,7 @@
     {
       "name": "メニューを見る",
       "short_name": "メニュー",
-      "description": "人気のカクテル/ウイスキーをすぐ表示",
+      "description": "豊富なドリンクメニューと本格フードをすぐ表示",
       "url": "/index.html#menu",
       "icons": [{ "src": "images/chuckleparkbar-logo.png", "sizes": "192x192", "type": "image/png" }]
     },
@@ -33,12 +33,6 @@
       "icons": [{ "src": "images/chuckleparkbar-logo.png", "sizes": "192x192", "type": "image/png" }]
     }
   ],
-  "share_target": {
-    "action": "/index.html#share",
-    "method": "GET",
-    "enctype": "application/x-www-form-urlencoded",
-    "params": {"title": "title", "text": "text", "url": "url"}
-  },
   "lang": "ja",
   "dir": "ltr",
   "icons": [
