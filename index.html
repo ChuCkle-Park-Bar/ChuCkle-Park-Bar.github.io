@@ -106,6 +106,14 @@
     .glightbox-container .__lb-extra-desc { opacity:1 !important; }
     /* 既定テーマで白背景でない場合に備え背景を白に統一（必要に応じて調整） */
     .glightbox-container .gdesc-inner { background:#fff !important; }
+    /* ギャラリー画像の拡大表示時のみタイトル領域を非表示 */
+    .glightbox-container .gslide-description {
+      display: block !important;
+    }
+    /* ギャラリー専用のdata-gallery="gallery"を持つ要素のみ非表示 */
+    .glightbox-container .gslide:has([data-gallery="gallery"]) .gslide-description {
+      display: none !important;
+    }
   </style>
 </head>
 <body class="bg-black text-zinc-100">
@@ -553,7 +561,12 @@
             spaceBetween: 16,
             loop: filteredData.length > 1,
             breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
-            pagination: { el: '.myGallery .swiper-pagination', clickable: true },
+            pagination: { 
+              el: '.myGallery .swiper-pagination', 
+              clickable: true,
+              dynamicBullets: true,
+              dynamicMainBullets: 3
+            },
             navigation: { nextEl: '.myGallery .swiper-button-next', prevEl: '.myGallery .swiper-button-prev' },
             keyboard: { enabled: true }
           });
