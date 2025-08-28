@@ -137,17 +137,97 @@ hero.json (2) / gallery.json (26) を生成
 | 画像を追加したのに JSON に出ない | 対象拡張子か、コマンドを再実行したか確認。 |
 | `images/menu` が無いエラー | ディレクトリを作成して再実行。 |
 
-## SEO & UX 実装
+## Google Search Console 設定手順
 
-### SEO 対応
+### 1. プロパティ追加
+1. [Google Search Console](https://search.google.com/search-console/) にアクセス
+2. 「プロパティを追加」→「URLプレフィックス」を選択
+3. `https://chuckle-park-bar.github.io/` を入力
 
-実装済み:
+### 2. 所有権確認
+**方法A: HTMLファイル**
+1. 指定されたHTMLファイルをダウンロード
+2. `google-site-verification.html` の内容を指定されたファイルの内容に置き換え
+3. ファイル名も指定されたもの（例：`googleXXXXXXXXXXXX.html`）にリネーム
+4. GitHub Pages にデプロイ後、「確認」をクリック
 
-- `<title>` 最適化 / `meta description` / `canonical` / `meta robots`
-- Open Graph / Twitter Card メタデータ
-- 構造化データ (JSON-LD / `BarOrPub` + `ReserveAction`)
-- `sitemap.xml` / `robots.txt`
-- 各画像の `alt` 属性 (hero / gallery / menu サムネイル)
+**方法B: メタタグ（推奨）**
+1. 指定された `<meta name="google-site-verification" content="XXXXXXXXXX" />` タグを `index.html` の `<head>` 内に追加
+2. GitHub Pages にデプロイ後、「確認」をクリック
+
+### 3. サイトマップ送信
+1. 所有権確認後、左メニューから「サイトマップ」を選択
+2. `sitemap.xml` を入力して送信
+3. ステータスが「成功」になるまで待機（通常数時間〜数日）
+
+### 4. インデックス登録リクエスト
+1. 左メニューから「URL検査」を選択
+2. `https://chuckle-park-bar.github.io/` を入力
+3. 「インデックス登録をリクエスト」をクリック
+4. 処理完了まで待機
+
+### 5. その他の設定
+- **地域設定**: 「設定」→「地域設定」で日本を選択
+- **モバイルフレンドリー**: 自動でテスト済み（レスポンシブデザイン対応）
+- **Core Web Vitals**: パフォーマンス指標を定期的にチェック
+
+## SEO最適化実装済み項目
+
+### 技術的SEO
+- ✅ XML サイトマップ（画像サイトマップ含む）
+- ✅ robots.txt 最適化
+- ✅ 構造化データ（JSON-LD / BarOrPub schema）
+- ✅ 正規URL（canonical）設定
+- ✅ メタロボット指令（index, follow）
+- ✅ Open Graph / Twitter Card
+- ✅ 地理的メタデータ（ICBM, geo.position）
+
+### コンテンツ最適化
+- ✅ タイトルタグ最適化（60文字以内）
+- ✅ メタディスクリプション（160文字以内）
+- ✅ 適切なヘッダータグ階層（H1-H3）
+- ✅ alt属性（すべての画像）
+- ✅ 内部リンク構造
+- ✅ キーワード戦略（本郷、バー、隠れ家、等）
+
+### 技術パフォーマンス
+- ✅ モバイルファースト・レスポンシブ
+- ✅ 画像遅延読み込み
+- ✅ PWA対応（Service Worker）
+- ✅ CDNプリコネクト
+- ✅ 適切なHTTPヘッダー
+
+### ローカルSEO
+- ✅ Google Business Profile 用構造化データ
+- ✅ 店舗情報（住所、電話、営業時間）
+- ✅ 地図埋め込み
+- ✅ レビュー・評価スキーマ
+
+## 外部リンク・導線作成
+
+### 実装済み
+- Instagram プロフィール（構造化データ sameAs に含む）
+- Google Maps リンク
+
+### 推奨追加リンク
+- GitHub リポジトリ README へのサイトリンク
+- SNS プロフィール（Instagram バイオ）にWebサイトURL
+- 名古屋グルメ系サイトへの掲載依頼
+- 本郷駅周辺情報サイトへの掲載依頼
+
+## 継続的SEO管理
+
+### 定期チェック項目
+- Search Console でのクロールエラー確認
+- サイトマップのインデックス状況
+- 検索パフォーマンスレポート
+- Core Web Vitals スコア
+- モバイルユーザビリティ
+
+### アップデート時の注意
+- 営業時間・住所変更時は構造化データも更新
+- 新しい画像追加時はサイトマップ更新
+- メニュー変更時は lastmod 日付更新
 
 ### UX/UI 実装
 

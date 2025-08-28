@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://chuckle-park-bar.github.io/</loc>
     <lastmod>2025-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://chuckle-park-bar.github.io/images/chuckleparkbar-logo.png</image:loc>
+      <image:title>ChuCkle Park Bar ロゴ</image:title>
+      <image:caption>本郷の隠れ家バー ChuCkle Park Bar</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://chuckle-park-bar.github.io/images/exterior.jpg</image:loc>
+      <image:title>ChuCkle Park Bar 外観</image:title>
+      <image:caption>本郷エリアに佇む隠れ家バーの外観</image:caption>
+    </image:image>
   </url>
 </urlset>
