@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /offline.html
 
 Sitemap: https://chuckle-park-bar.github.io/sitemap.xml
