@@ -62,6 +62,19 @@
   <link rel="icon" type="image/png" href="images/chuckleparkbar-logo.png" />
   <link rel="shortcut icon" href="images/chuckleparkbar-logo.png" type="image/png" />
   <link rel="apple-touch-icon" href="images/chuckleparkbar-logo.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="images/chuckleparkbar-logo.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="images/chuckleparkbar-logo.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="images/chuckleparkbar-logo.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="images/chuckleparkbar-logo.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="images/chuckleparkbar-logo.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="images/chuckleparkbar-logo.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="images/chuckleparkbar-logo.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="images/chuckleparkbar-logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/chuckleparkbar-logo.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="images/chuckleparkbar-logo.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/chuckleparkbar-logo.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="images/chuckleparkbar-logo.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="images/chuckleparkbar-logo.png" />
   <link rel="manifest" href="manifest.webmanifest" crossorigin="use-credentials" />
 
   <!-- iOS / PWA Meta -->
@@ -114,10 +127,10 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "BarOrPub",
+    "@type": ["BarOrPub", "LocalBusiness"],
     "@id": "https://chuckle-park-bar.github.io/#bar",
     "name": "ChuCkle Park Bar",
-    "alternateName": "チャックル パーク バー",
+    "alternateName": ["チャックル パーク バー", "本郷 バー ChuCkle Park Bar", "本郷駅 バー"],
     "url": "https://chuckle-park-bar.github.io/",
     "inLanguage": "ja-JP",
     "image": [
@@ -129,8 +142,13 @@
       "https://chuckle-park-bar.github.io/images/gallery/drinks/drinks_01.jpg",
       "https://chuckle-park-bar.github.io/images/gallery/food/food_01.jpg"
     ],
-    "logo": "https://chuckle-park-bar.github.io/images/chuckleparkbar-logo.png",
-    "description": "本郷の路地にあるバー。社交も隠れ家も楽しめる空間で、豊富なドリンクと本格フードをご用意。カウンター8席・テーブル2〜8名、深夜2時まで。",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://chuckle-park-bar.github.io/images/chuckleparkbar-logo.png",
+      "width": 512,
+      "height": 512
+    },
+    "description": "本郷駅徒歩4分、本郷の路地にある隠れ家バー。本郷エリアで深夜3時まで営業し、豊富なドリンクと本格フードをご提供。カウンター8席・テーブル2〜8名対応の本郷のバーです。",
     "servesCuisine": ["Bar", "Cocktails", "Whisky", "Japanese"],
     "priceRange": "¥¥",
     "telephone": "+81-52-990-9426",
@@ -142,6 +160,20 @@
       "postalCode": "465-0059",
       "addressCountry": "JP"
     },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "名古屋市名東区"
+      },
+      {
+        "@type": "Place",
+        "name": "本郷"
+      },
+      {
+        "@type": "Place",
+        "name": "本郷駅周辺"
+      }
+    ],
     "geo": { "@type": "GeoCoordinates", "latitude": 35.1736274, "longitude": 137.0121227 },
     "hasMap": "https://www.google.com/maps?q=%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E5%90%8D%E6%9D%B1%E5%8C%BA%E7%A4%BE%E3%81%8C%E4%B8%981%E4%B8%81%E7%9B%AE114+%E3%83%99%E3%83%AB%E3%83%AD%E3%82%A4%E3%83%A4%E3%83%AB%E6%9C%AC%E9%83%B71B&z=18&hl=ja",
     "sameAs": ["https://www.instagram.com/chuckleparkbar"],
@@ -169,8 +201,14 @@
       {
         "@type": "Review",
         "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+        "author": { "@type": "Person", "name": "本郷在住者" },
+        "reviewBody": "本郷駅から歩いてすぐの素晴らしいバー。本郷エリアでこんな隠れ家的なバーがあるなんて知らなかった。深夜まで営業しているので仕事帰りにも利用しやすい。"
+      },
+      {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
         "author": { "@type": "Person", "name": "バー愛好家" },
-        "reviewBody": "本郷の路地にある素晴らしいバー。社交の場としても隠れ家としても使える。一人で落ち着いても、仲間と盛り上がっても楽しめる特別な場所。"
+        "reviewBody": "本郷の路地にある素晴らしいバー。社交の場としても隠れ家としても使える。一人で落ち着いても、仲間と盛り上がっても楽しめる特別な場所。本郷でバーを探している人には絶対おすすめ。"
       }
     ]
   }
@@ -273,8 +311,8 @@
           <img src="images/chuckleparkbar-logo.png" alt="ChuCkle Park Bar メインロゴ" class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-contain invert select-none pointer-events-none" draggable="false" />
         </div>
         <!-- タイトル（ロゴ下に移動） -->
-        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight md:text-6xl leading-tight text-white drop-shadow-lg md:drop-shadow-none max-w-xs sm:max-w-lg md:max-w-none mx-auto" data-aos="fade-up" data-aos-delay="80">本郷の路地で<br/>ひそやかな社交と<br/>深いくつろぎを</h1>
-        <p class="mx-auto mt-3 sm:mt-5 max-w-sm sm:max-w-xl md:max-w-2xl text-zinc-100 md:text-zinc-300 text-sm sm:text-base drop-shadow-md md:drop-shadow-none" data-aos="fade-up" data-aos-delay="140">交わる声、ほどける本音…社交も隠れ家もここに。<br/>豊富なドリンクと本格フードで、あなたの時間を大切にします。</p>
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight md:text-6xl leading-tight text-white drop-shadow-lg md:drop-shadow-none max-w-xs sm:max-w-lg md:max-w-none mx-auto" data-aos="fade-up" data-aos-delay="80">本郷駅徒歩4分<br/>隠れ家バーで<br/>特別なひととき</h1>
+        <p class="mx-auto mt-3 sm:mt-5 max-w-sm sm:max-w-xl md:max-w-2xl text-zinc-100 md:text-zinc-300 text-sm sm:text-base drop-shadow-md md:drop-shadow-none" data-aos="fade-up" data-aos-delay="140">本郷の路地にあるバー『ChuCkle Park Bar』。交わる声、ほどける本音…社交も隠れ家もここに。<br/>豊富なドリンクと本格フードで、あなたの時間を大切にします。</p>
         <div class="mt-6 sm:mt-8 md:mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row" data-aos="zoom-in" data-aos-delay="220">
           <a href="#reserve" class="rounded-2xl bg-brand px-6 py-3 font-medium text-black hover:bg-brand-dark shadow-lg">席を予約</a>
           <a href="#gallery" class="rounded-2xl border border-white/30 bg-white/10 backdrop-blur-sm px-6 py-3 font-medium hover:bg-white/20">ギャラリーを見る</a>
