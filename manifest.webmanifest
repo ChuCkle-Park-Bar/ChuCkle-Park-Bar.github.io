@@ -1,7 +1,7 @@
 {
   "name": "ChuCkle Park Bar",
   "short_name": "CP Bar",
-  "description": "本郷の隠れ家バー。豊富なドリンクと本格フード。おひとりでも仲間とでも。",
+  "description": "本郷の路地にあるバー。社交も隠れ家も楽しめる空間で、豊富なドリンクと本格フード。",
   "start_url": "/index.html",
   "scope": "/",
   "display": "standalone",
