@@ -1,5 +1,5 @@
 /* Basic service worker for offline cache */
-const VERSION = 'v1.0.2';
+const VERSION = 'v1.0.3';
 const STATIC_CACHE = `static-${VERSION}`;
 const RUNTIME_CACHE = 'runtime';
 const OFFLINE_URL = 'offline.html';
@@ -8,6 +8,12 @@ const CORE_ASSETS = [
   '/',
   '/index.html',
   '/manifest.webmanifest',
+  '/favicon/favicon-padded72.ico',
+  '/favicon/favicon-16x16-padded72.png',
+  '/favicon/favicon-32x32-padded72.png',
+  '/favicon/apple-touch-icon-180x180-padded72.png',
+  '/favicon/android-chrome-192x192-padded72.png',
+  '/favicon/android-chrome-512x512-padded72.png',
   '/images/chuckleparkbar-logo.png',
   '/images/hero/hero_01.jpg',
   '/offline.html'

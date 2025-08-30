@@ -16,36 +16,94 @@
       "short_name": "ギャラリー",
       "description": "店内の雰囲気やドリンク・フードの写真をすぐ表示",
       "url": "/index.html#gallery",
-      "icons": [{ "src": "images/chuckleparkbar-logo.png", "sizes": "192x192", "type": "image/png" }]
+      "icons": [{ "src": "favicon/android-chrome-192x192-padded72.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "アクセス",
       "short_name": "アクセス",
       "description": "所在地と地図を表示",
       "url": "/index.html#access",
-      "icons": [{ "src": "images/chuckleparkbar-logo.png", "sizes": "192x192", "type": "image/png" }]
+      "icons": [{ "src": "favicon/android-chrome-192x192-padded72.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "予約セクション",
       "short_name": "予約",
       "description": "予約・問い合わせにジャンプ",
       "url": "/index.html#reserve",
-      "icons": [{ "src": "images/chuckleparkbar-logo.png", "sizes": "192x192", "type": "image/png" }]
+      "icons": [{ "src": "favicon/android-chrome-192x192-padded72.png", "sizes": "192x192", "type": "image/png" }]
     }
   ],
   "lang": "ja",
   "dir": "ltr",
   "icons": [
     {
-      "src": "images/chuckleparkbar-logo.png",
+      "src": "favicon/favicon-16x16-padded72.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "favicon/favicon-32x32-padded72.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "favicon/favicon-48x48-padded72.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "favicon/favicon-64x64-padded72.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "favicon/favicon-96x96-padded72.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "favicon/favicon-128x128-padded72.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "favicon/android-chrome-192x192-padded72.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "images/chuckleparkbar-logo.png",
+      "src": "favicon/favicon-256x256-padded72.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "favicon/android-chrome-384x384-padded72.png",
+      "type": "image/png",
+      "sizes": "384x384"
+    },
+    {
+      "src": "favicon/android-chrome-512x512-padded72.png",
       "type": "image/png",
       "sizes": "512x512",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "favicon/maskable-512x512-padded64.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "favicon/icon-master-1024-padded72.png",
+      "type": "image/png",
+      "sizes": "1024x1024",
+      "purpose": "any"
+    },
+    {
+      "src": "favicon/icon-master-1024-maskable64.png",
+      "type": "image/png",
+      "sizes": "1024x1024",
+      "purpose": "maskable"
     }
   ]
 }
