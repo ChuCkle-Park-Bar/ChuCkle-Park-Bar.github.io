@@ -4,42 +4,27 @@
   <url>
     <loc>https://chuckle-park-bar.github.io/</loc>
     <lastmod>2025-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+
     <image:image>
       <image:loc>https://chuckle-park-bar.github.io/images/chuckleparkbar-logo.png</image:loc>
-      <image:title>ChuCkle Park Bar ロゴ</image:title>
-      <image:caption>本郷の路地にある ChuCkle Park Bar</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://chuckle-park-bar.github.io/images/exterior.jpg</image:loc>
-      <image:title>ChuCkle Park Bar 外観</image:title>
-      <image:caption>本郷の路地にあるバーの外観</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://chuckle-park-bar.github.io/images/hero/hero_01.jpg</image:loc>
-      <image:title>ChuCkle Park Bar ヒーロー画像 1</image:title>
-      <image:caption>ChuCkle Park Bar の魅力的な店内の雰囲気</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://chuckle-park-bar.github.io/images/hero/hero_02.jpg</image:loc>
-      <image:title>ChuCkle Park Bar ヒーロー画像 2</image:title>
-      <image:caption>本郷の路地で過ごす特別な時間</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://chuckle-park-bar.github.io/images/gallery/interior/interior_01.jpg</image:loc>
-      <image:title>ChuCkle Park Bar 店内風景</image:title>
-      <image:caption>落ち着いた雰囲気の店内でリラックスした時間を</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://chuckle-park-bar.github.io/images/gallery/drinks/drinks_01.jpg</image:loc>
-      <image:title>ChuCkle Park Bar ドリンク</image:title>
-      <image:caption>豊富なドリンクメニューから選べるカクテル</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://chuckle-park-bar.github.io/images/gallery/food/food_01.jpg</image:loc>
-      <image:title>ChuCkle Park Bar 本格フード</image:title>
-      <image:caption>深夜2時まで提供する本格的なお料理</image:caption>
     </image:image>
   </url>
 </urlset>
