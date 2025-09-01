@@ -1,7 +1,7 @@
 {
   "name": "ChuCkle Park Bar",
   "short_name": "CP Bar",
-  "description": "本郷のオーセンティック\"じゃない\"BAR。BARだけどごはんがうまい、ふらっと入りやすい店。おひとり様でもグループでも、気さくなスタッフがお迎え。",
+  "description": "本郷のオーセンティックじゃないBAR。BARだけどごはんがうまい、ふらっと入りやすい店。おひとり様でもグループでも、気さくなスタッフがお迎え。",
   "start_url": "/index.html",
   "scope": "/",
   "display": "standalone",
