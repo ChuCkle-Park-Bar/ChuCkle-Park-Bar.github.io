@@ -15,6 +15,33 @@
   <meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <meta name="format-detection" content="telephone=no" />
   <meta name="theme-color" content="#9A7B4F" />
+  
+  <!-- AI Search Engine Optimization -->
+  <meta name="AI-content-detection" content="human-written" />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  
+  <!-- E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) -->
+  <meta name="article:author" content="ChuCkle Park Bar 公式" />
+  <meta name="article:publisher" content="ChuCkle Park Bar" />
+  <meta name="expertise" content="バー運営, カクテル調合, 飲食サービス" />
+  <meta name="experience" content="名古屋・本郷地域での地域密着型バー運営" />
+  <meta name="trustworthiness" content="verified-business" />
+  
+  <!-- Local Business Verification -->
+  <meta name="business:hours" content="月火水木金土 19:00-03:00" />
+  <meta name="business:phone" content="+81-52-990-9426" />
+  <meta name="business:type" content="Bar, Restaurant" />
+  <meta name="business:location:latitude" content="35.1736274" />
+  <meta name="business:location:longitude" content="137.0121227" />
+  
+  <!-- Web Accessibility -->
+  <meta name="accessibility" content="keyboard-navigation,screen-reader-friendly" />
+  
+  <!-- Search Engine Specific -->
+  <meta name="bingbot" content="index,follow" />
+  <meta name="duckduckbot" content="index,follow" />
+  <meta name="slurp" content="index,follow" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
@@ -45,9 +72,28 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
   <!-- Preload critical resources -->
-  <link rel="preload" href="images/chuckleparkbar-logo.png" as="image" type="image/png">
-  <link rel="preload" href="images/hero/hero_01.jpg" as="image" type="image/jpeg">
+  <link rel="preload" href="images/chuckleparkbar-logo.png" as="image" type="image/png" fetchpriority="high">
+  <link rel="preload" href="images/hero/hero_01.jpg" as="image" type="image/jpeg" fetchpriority="high">
   <link rel="preload" href="https://cdn.tailwindcss.com" as="script" crossorigin>
+  
+  <!-- DNS Prefetch for external resources -->
+  <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+  <link rel="dns-prefetch" href="//unpkg.com">
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="//www.google.com">
+  <link rel="dns-prefetch" href="//maps.google.com">
+  
+  <!-- Critical CSS inlined for faster rendering -->
+  <style>
+    body{background-color:#000;color:#f4f4f5;margin:0;padding:0}
+    .fixed{position:fixed}
+    .top-0{top:0}
+    .left-0{left:0}
+    .w-full{width:100%}
+    .z-50{z-index:50}
+    .bg-black\/70{background-color:rgb(0 0 0 / 0.7)}
+    .backdrop-blur-md{backdrop-filter:blur(12px)}
+  </style>
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -68,37 +114,17 @@
     "@type": "WebSite",
     "@id": "https://chuckle-park-bar.github.io/#website",
     "url": "https://chuckle-park-bar.github.io/",
-    "name": "Chuckle Park Bar",
-    "alternateName": ["ChuCkle Park Bar", "チャックル パーク バー"]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ImageGallery",
-    "name": "ChuCkle Park Bar ギャラリー",
-    "description": "本郷のオーセンティックじゃないBAR ChuCkle Park Bar の店内、ドリンク、フードの写真ギャラリー",
-    "mainEntity": [
-      {
-        "@type": "ImageObject",
-        "contentUrl": "https://chuckle-park-bar.github.io/images/gallery/interior/interior_01.jpg",
-        "name": "店内風景",
-        "description": "オーセンティックじゃないBARの居心地よい店内でリラックスした時間を"
+    "name": "ChuCkle Park Bar",
+    "alternateName": ["チャックル パーク バー", "Chuckle Park Bar"],
+    "description": "名古屋・本郷のオーセンティックじゃないBAR。BARだけどごはんがうまい、ふらっと入りやすい店。",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://chuckle-park-bar.github.io/?q={search_term_string}"
       },
-      {
-        "@type": "ImageObject", 
-        "contentUrl": "https://chuckle-park-bar.github.io/images/gallery/drinks/drinks_01.jpg",
-        "name": "ドリンク",
-        "description": "豊富なドリンクメニューから選べるカクテル"
-      },
-      {
-        "@type": "ImageObject",
-        "contentUrl": "https://chuckle-park-bar.github.io/images/gallery/food/food_01.jpg", 
-        "name": "本格フード",
-        "description": "BARだけどごはんがうまい。深夜2時まで提供する本格的なお料理"
-      }
-    ]
+      "query-input": "required name=search_term_string"
+    }
   }
   </script>
 
@@ -171,6 +197,55 @@
   }
   </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "ChuCkle Park Barの営業時間は？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "月曜日から土曜日まで19:00〜3:00で営業しております。日曜日は定休日です。"
+        }
+      },
+      {
+        "@type": "Question", 
+        "name": "予約は必要ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "予約なしでもご利用いただけますが、確実にお席を確保したい場合は事前のご予約をおすすめします。お電話でご予約を承っております。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "本郷駅からのアクセスは？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "地下鉄東山線本郷駅から徒歩4分です。名古屋市名東区社が丘1丁目114 ベルロイヤル本郷1Bにございます。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "一人でも入りやすいですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい、お一人様でも気軽にご利用いただけます。オーセンティックじゃないカジュアルな雰囲気で、気さくなスタッフがお迎えいたします。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "料理メニューはありますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい、BARですがごはんがおいしいのが自慢です。カクテルやウイスキーと一緒に、こだわりの料理もお楽しみいただけます。"
+        }
+      }
+    ]
+  }
+  </script>
+
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config = { theme: { extend: { colors: { brand: { DEFAULT: '#9A7B4F', dark: '#7C623F' }}}}};</script>
@@ -207,7 +282,7 @@
       <!-- ロゴ -->
       <a href="#home" class="flex items-center gap-3">
         <span class="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-md bg-white ring-1 ring-white/10">
-          <img src="images/chuckleparkbar-logo.png" alt="ChuCkle Park Bar ロゴ" class="h-full w-full object-contain scale-150" />
+          <img src="images/chuckleparkbar-logo.png" alt="ChuCkle Park Bar (チャックル パーク バー) - 名古屋本郷駅近くのオーセンティックじゃないバー" class="h-full w-full object-contain scale-150" />
         </span>
         <span class="text-white font-bold text-lg">ChuCkle Park Bar</span>
       </a>
@@ -265,7 +340,7 @@
       <div class="w-full flex flex-col items-center">
         <!-- 中央ロゴ -->
         <div class="mb-5" data-aos="zoom-in" data-aos-delay="50">
-          <img src="images/chuckleparkbar-logo.png" alt="ChuCkle Park Bar メインロゴ" class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-contain invert select-none pointer-events-none" draggable="false" />
+          <img src="images/chuckleparkbar-logo.png" alt="ChuCkle Park Bar メインロゴ - 本郷駅徒歩4分のバー・レストラン" class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-contain invert select-none pointer-events-none" draggable="false" />
         </div>
         <!-- タイトル（ロゴ下に移動） -->
         <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight md:text-6xl leading-tight text-white drop-shadow-lg md:drop-shadow-none max-w-xs sm:max-w-lg md:max-w-none mx-auto" data-aos="fade-up" data-aos-delay="80">オーセンティック<br/>じゃない<br/>BAR</h1>
@@ -299,7 +374,7 @@
         </ul>
       </div>
       <div data-aos="fade-up" data-aos-duration="800" class="flex justify-end">
-        <img class="w-96 h-128 rounded-2xl border border-white/10 object-cover" src="images/exterior.jpg" alt="外観写真" />
+        <img class="w-96 h-128 rounded-2xl border border-white/10 object-cover" src="images/exterior.jpg" alt="ChuCkle Park Bar 外観 - 名古屋市名東区本郷のオーセンティックじゃないバー店舗" />
       </div>
     </div>
   </section>
