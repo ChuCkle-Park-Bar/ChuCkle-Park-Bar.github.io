@@ -24,14 +24,14 @@
     "categoryLabel": "ドリンク"
   },
   {
-    "file": "exterior_101.jpg",
-    "path": "images/gallery/exterior/exterior_101.jpg",
+    "file": "exterior_01.jpg",
+    "path": "images/gallery/exterior/exterior_01.jpg",
     "category": "exterior",
     "categoryLabel": "外観"
   },
   {
-    "file": "exterior_102.jpg",
-    "path": "images/gallery/exterior/exterior_102.jpg",
+    "file": "exterior_02.jpg",
+    "path": "images/gallery/exterior/exterior_02.jpg",
     "category": "exterior",
     "categoryLabel": "外観"
   },
